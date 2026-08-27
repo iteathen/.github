@@ -1,0 +1,51 @@
+name: Scoped proposal
+description: Propose a public contract, architecture, behavior, documentation, or repository improvement.
+title: "[Proposal]: "
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and discussions.
+          required: true
+        - label: I read the owning repository's instructions, status, and roadmap.
+          required: true
+        - label: This is not a public vulnerability report.
+          required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended outcome
+      description: State the observable result, not only a preferred implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: owner
+    attributes:
+      label: Authoritative owner and boundary
+      description: Which component owns the meaning and lifecycle? What changes if the current neighbor is replaced?
+    validations:
+      required: true
+  - type: textarea
+    id: bounds
+    attributes:
+      label: Bounds, failures, and cleanup
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Decisive evidence
+      description: What is the cheapest observation that could falsify this proposal?
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and readiness
+      description: Link owning issues and identify blocked or explicitly out-of-scope work.
+    validations:
+      required: false
