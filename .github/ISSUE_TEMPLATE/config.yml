@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security reporting guidance
+    url: https://github.com/iteathen/.github/blob/main/SECURITY.md
+    about: Report vulnerabilities privately through the affected repository's Security tab.
+  - name: Account-wide projects
+    url: https://github.com/iteathen
+    about: Find the owning repository before reporting a defect or proposing a change.

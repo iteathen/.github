@@ -1,0 +1,50 @@
+name: Reproducible defect
+description: Report a reproducible defect in the owning repository's current behavior, contract, documentation, or tooling.
+title: "[Defect]: "
+labels:
+  - bug
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and discussions.
+          required: true
+        - label: I read the repository's current status and contributor guidance.
+          required: true
+        - label: This report contains no credential, private artifact, or vulnerability detail.
+          required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Affected revision or version
+      placeholder: Commit SHA or package version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide deterministic steps and inputs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Exact environment
+      description: Include operating system, runtime/toolchain, and relevant hardware/driver identity.
+    validations:
+      required: false
