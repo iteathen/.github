@@ -30,6 +30,19 @@ Confirm, where applicable:
 - [ ] Performance/concurrency/API breadth is tied to a real consumer requirement or measured bottleneck rather than a theoretical ceiling.
 - [ ] High-authority security work identifies the proportional independent-review/deployment gate.
 
+## Public evidence and process proportionality
+
+For public-facing or process changes, confirm:
+
+- [ ] The README first screen states current executable/validatable reality before architecture or roadmap.
+- [ ] Run/verify commands and material unsupported/unqualified states are easy to find.
+- [ ] Security claims keep material missing/unqualified properties adjacent to the claim.
+- [ ] The change does not add defensive “future ceiling” prose where a short current limit is sufficient.
+- [ ] New process/coordination/compatibility/migration machinery names a real present beneficiary or demonstrated irreversible cost.
+- [ ] Pre-1.0 compatibility shims protect an actual external/deployed/persisted dependency; otherwise the change uses a clean break.
+- [ ] Tool/vendor-specific agent files remain pointers rather than duplicate instruction systems.
+- [ ] If existing abstractions are sufficiently specified but unexercised, the next step is an executable public-contract falsifier rather than more speculative layering.
+
 ## Boundary and risk
 
 - [ ] Project-specific policy remains in its owning repository.

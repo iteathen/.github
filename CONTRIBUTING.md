@@ -2,6 +2,12 @@
 
 Public contributions are welcome. Repository-specific instructions, accepted specifications, status documents, and contribution guides take precedence over this shared default.
 
+## AI-assisted development
+
+These projects may use substantial AI-agent assistance in coding, review, research, and documentation. AI output is working material, not validation evidence. Contributors and maintainers remain responsible for understanding what they submit or integrate and for the accuracy of every claim attached to it.
+
+AI-assisted contributions are welcome under the same ownership, review, testing, provenance, security, qualification, and cleanup requirements as any other contribution. Routine AI use does not need a prompt log or tool inventory; disclose material assistance when it affects provenance, licensing, security review, reproducibility, or a repository-specific requirement. Do not cite model agreement or model-to-model review as proof of correctness.
+
 ## Before starting
 
 1. Read the target repository's README, `AGENTS.md` or developer guide, status, roadmap, and relevant accepted specifications.
