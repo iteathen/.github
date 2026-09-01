@@ -58,6 +58,16 @@ Public documentation must not look more mature than the software.
 - When existing architecture is sufficiently specified but materially unexercised, the next architecture work is a thin executable falsifier through intended public contracts unless new evidence shows a specific unresolved design question.
 - README/API/community polish follows executable truth. GitHub popularity metrics do not measure engineering quality, but the absence of consumers weakens the case for consumer-protection machinery that has no demonstrated beneficiary.
 
+## AI-assisted development accountability
+
+AI assistance is permitted and may be substantial, but it never lowers the evidence or ownership bar.
+
+- Treat model-generated code, prose, analysis, and model-to-model review as untrusted working material, not authority, an independent oracle, review evidence, or proof of correctness.
+- The submitting contributor or maintainer remains accountable for understanding the change and for every implementation, security, compatibility, test, provenance, and qualification claim attached to it.
+- Apply the same repository-required review, tests, exact-head evidence, provenance, and cleanup gates regardless of whether a change was handwritten, AI-assisted, or largely agent-produced.
+- Keep public disclosure brief and factual. Do not create defensive documents explaining why AI use is acceptable or documentation about trying not to look AI-generated.
+- Routine AI assistance does not require a prompt log or tool inventory. Disclose material AI assistance when it affects provenance, licensing, security review, reproducibility, or another repository-specific requirement.
+
 ## Validation
 
 Run before completion:
