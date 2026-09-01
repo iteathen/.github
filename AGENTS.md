@@ -44,6 +44,20 @@ Apply these rules:
 - A thin vertical slice is a falsification tool, not permission to collapse ownership boundaries. It must compose through the same public contracts intended for real consumers.
 - PRs and closure records state which blocker class changed, what exact evidence supports the transition, what remains unproven, and which downstream capability is newly unblocked.
 
+## Public evidence and process proportionality
+
+Public documentation must not look more mature than the software.
+
+- A repository README leads with: what the project does today; what can actually be run or validated today; the exact support/qualification limits; then architecture and roadmap links. A specification-only project says so on the first screen.
+- Prefer short current-state statements over defensive prose about architectural ceilings. Put future capability rationale, rejected alternatives, and detailed architecture in owned design documents rather than arguing with hypothetical skeptics in the README.
+- Never spend more public prose defending an unimplemented capability than demonstrating an implemented one.
+- Security-facing claims distinguish **enforced and qualified**, **implemented but not fully qualified**, **designed/proposed**, and **known missing** properties. Limitations that materially change the trust claim stay near the claim, not buried later.
+- New process, coordination, compatibility, migration, abstraction, or policy machinery names its present beneficiary: a real consumer, persisted/deployed state, security/recovery boundary, external contract, or demonstrated cost of changing later. Future possibility alone is not enough to implement machinery now.
+- Before 1.0, compatibility shims and migration layers require evidence of an actual external/deployed/persisted dependency. When none exists, prefer the clean break and preserve only concise historical provenance when useful.
+- Tool- or vendor-specific agent entry files remain tiny pointers to one canonical instruction source; they do not duplicate policy.
+- When existing architecture is sufficiently specified but materially unexercised, the next architecture work is a thin executable falsifier through intended public contracts unless new evidence shows a specific unresolved design question.
+- README/API/community polish follows executable truth. GitHub popularity metrics do not measure engineering quality, but the absence of consumers weakens the case for consumer-protection machinery that has no demonstrated beneficiary.
+
 ## Validation
 
 Run before completion:
