@@ -60,6 +60,8 @@ ASSESS
 
 Assessment records the apparent problem, ownership, scope, complexity, consequence of being wrong, known unknowns, and current confidence. Reassessment explicitly asks what the research changed: whether the problem, owner, scope, complexity, consequence, dependencies, assumptions, or unknowns changed. If research materially expands the problem, assess and research the expanded problem before proceeding. Continue until scope is stable enough and confidence is high enough to choose the next tool.
 
+Low confidence after the first reassessment does **not** immediately authorize a prototype. First perform another research pass that is deliberately deeper, broader, or more targeted at the unresolved uncertainty, then reassess again. If that additional research materially improves confidence, continue research/reassessment while the information gain remains worthwhile. If confidence remains materially low after the additional pass and further research is no longer reducing the important uncertainty efficiently, treat research as saturated and escalate to a rapid prototype so reality can answer the remaining question.
+
 ### Recursive decomposition and the fast path
 
 Before applying more process to a large or complex problem, try to make the problem smaller. The discovery cycle is recursive: assess and research enough of the current problem to expose its real topology, then decompose it along genuine ownership, contract, lifecycle, resource/failure, execution, or dependency seams when doing so creates independently comprehensible work units.
@@ -76,13 +78,14 @@ The result may be a dependency **web**, not a neat tree. Record enough structure
 
 The parent problem retains integration responsibility. After child work completes, recompose the results and evidence upward: verify dependency edges, interface agreement, integration behavior, completeness, and the original parent acceptance condition. Individually correct leaves do not prove that the parent problem is solved.
 
-Then apply a confidence gate to any remaining non-fast-path unit:
+Then apply a three-state confidence gate to any remaining non-fast-path unit:
 
 - **Sufficient confidence:** write the final implementation plan at the level of detail actually supported by evidence.
-- **Materially insufficient confidence:** build the smallest quick-and-dirty rapid prototype that crosses enough of the real path to expose hidden constraints. The prototype is reconnaissance, not production architecture. Minimize polish and speculative abstraction; use real interfaces where composition is what must be learned. Record the question it is intended to answer, its deliberate shortcuts, and which conclusions are trustworthy.
+- **Low confidence, research still productive:** deepen, broaden, or redirect research around the unresolved uncertainty, then reassess. Do not prototype merely because the first research pass was insufficient.
+- **Persistently low confidence after additional research / research saturated:** build the smallest quick-and-dirty rapid prototype that crosses enough of the real path to expose the hidden constraint or interaction. The prototype is reconnaissance, not production architecture. Minimize polish and speculative abstraction; use real interfaces where composition is what must be learned. Record the question it is intended to answer, its deliberate shortcuts, and which conclusions are trustworthy.
 - After a prototype, observe reality, research the newly exposed questions, reassess scope and confidence, and repeat as needed. A prototype that proves the original framing wrong is successful reconnaissance.
 
-A final plan is authoritative only while its assumptions remain supported. During execution, a material surprise, hidden dependency, ownership conflict, lifecycle/resource mismatch, unexpected platform behavior, or other fact that invalidates dependent assumptions sends the work back to reassessment and research; prototype again when the new uncertainty is empirical. Do not patch around a newly discovered fact merely to preserve the old plan.
+A final plan is authoritative only while its assumptions remain supported. During execution, a material surprise, hidden dependency, ownership conflict, lifecycle/resource mismatch, unexpected platform behavior, or other fact that invalidates dependent assumptions sends the work back to reassessment and research; prototype again when the new uncertainty remains materially unresolved after research. Do not patch around a newly discovered fact merely to preserve the old plan.
 
 For problems whose **source is unknown**, switch from construction to diagnosis:
 
@@ -119,20 +122,23 @@ The governing shape is therefore:
 ASSESS
   -> RESEARCH
     -> REASSESS
-      -> repeat if scope grew or confidence is low
-        -> DECOMPOSE at real seams when useful
-           -> RECLASSIFY each child
-              -> FAST PATH for simple + small + understood leaves
-              -> RECURSE from ASSESS for complex / large / uncertain leaves
-           -> INTEGRATE and QUALIFY the parent objective
-        -> for any remaining irreducible non-fast-path unit: confidence gate
-           -> FINAL PLAN, when sufficiently understood
-           -> RAPID PROTOTYPE -> OBSERVE -> RESEARCH -> REASSESS, when not
-        -> EXECUTE
-           -> material surprises loop back to REASSESS / RESEARCH
-        -> QUALIFY / TEST
-        -> REVIEW
-        -> CLEANUP / DOCUMENT
+      -> if scope grew: reassess/research the expanded problem
+      -> if confidence is low: DEEPER / BROADER / TARGETED RESEARCH
+         -> REASSESS AGAIN
+            -> if research is still increasing confidence: continue research/reassessment
+            -> if confidence remains materially low and research is saturated: RAPID PROTOTYPE
+               -> OBSERVE -> RESEARCH newly exposed questions -> REASSESS
+      -> DECOMPOSE at real seams when useful
+         -> RECLASSIFY each child
+            -> FAST PATH for simple + small + understood leaves
+            -> RECURSE from ASSESS for complex / large / uncertain leaves
+         -> INTEGRATE and QUALIFY the parent objective
+      -> for any remaining irreducible non-fast-path unit with sufficient confidence: FINAL PLAN
+      -> EXECUTE
+         -> material surprises loop back to REASSESS / RESEARCH
+      -> QUALIFY / TEST
+      -> REVIEW
+      -> CLEANUP / DOCUMENT
 ```
 
 **Simple, small, well-understood work takes the fast path.** It should normally go directly to the bounded change and focused verification; do not manufacture research, planning, prototypes, or process artifacts for routine work. The extended cycle exists for complex, large-scope, or materially uncertain problems, and its purpose is often to recurse until most of that work has become a web of simple fast-path problems.
