@@ -43,6 +43,81 @@ A lower-level principle may not defeat a higher-level one. A locally simple impl
 
 When a repository has a local `AGENTS.md` or design-principles authority, carry this rule into that mandatory local startup path rather than assuming agents will discover this account-level file.
 
+## Adaptive problem-solving cycle
+
+Use an evidence-driven process whose rigor expands or contracts with the problem. Do not assume that the initial problem statement contains everything that matters: **you cannot know what you do not know.** Initial assessment is provisional; research is how the working model is exposed to facts outside its current frame.
+
+For every complex problem or large-scope problem, research is mandatory before a final implementation plan. Complexity increases research depth; scope increases research breadth. Research includes the actual protected repository state and governing specifications as well as, where relevant, history, upstream/vendor documentation, standards, literature, known failure modes, analogous implementations, consumers, dependencies, and external evidence. Research must look for facts that could invalidate or expand the initial framing, not merely confirm the first hypothesis.
+
+Use this discovery loop in order:
+
+```text
+ASSESS
+  -> RESEARCH
+    -> REASSESS
+      -> repeat when scope materially grows or confidence remains low
+```
+
+Assessment records the apparent problem, ownership, scope, complexity, consequence of being wrong, known unknowns, and current confidence. Reassessment explicitly asks what the research changed: whether the problem, owner, scope, complexity, consequence, dependencies, assumptions, or unknowns changed. If research materially expands the problem, assess and research the expanded problem before proceeding. Continue until scope is stable enough and confidence is high enough to choose the next tool.
+
+Then apply a confidence gate:
+
+- **Sufficient confidence:** write the final implementation plan at the level of detail actually supported by evidence.
+- **Materially insufficient confidence:** build the smallest quick-and-dirty rapid prototype that crosses enough of the real path to expose hidden constraints. The prototype is reconnaissance, not production architecture. Minimize polish and speculative abstraction; use real interfaces where composition is what must be learned. Record the question it is intended to answer, its deliberate shortcuts, and which conclusions are trustworthy.
+- After a prototype, observe reality, research the newly exposed questions, reassess scope and confidence, and repeat as needed. A prototype that proves the original framing wrong is successful reconnaissance.
+
+A final plan is authoritative only while its assumptions remain supported. During execution, a material surprise, hidden dependency, ownership conflict, lifecycle/resource mismatch, unexpected platform behavior, or other fact that invalidates dependent assumptions sends the work back to reassessment and research; prototype again when the new uncertainty is empirical. Do not patch around a newly discovered fact merely to preserve the old plan.
+
+For problems whose **source is unknown**, switch from construction to diagnosis:
+
+1. Scope the failure until the smallest useful suspect region is isolated; prove good boundaries and remove them from active suspicion.
+2. Instrument the suspect region aggressively with temporary checkpoints at meaningful semantic transitions, comparing expected and actual inputs, identities, state, ownership, resources, generations, transitions, outputs, and cleanup behavior as relevant.
+3. Use the next run to locate the **first divergence from expected reality**, then narrow again. Prefer checkpoints that answer a hypothesis over blind line-by-line logging.
+4. After the cause is proven, remove temporary diagnostic noise or retain only the smallest durable invariant/check that is worth its continuing cost.
+
+Testing should maximize trustworthy information per expensive run. **Fail fast on invalid prerequisites; otherwise collect broadly across independent valid cases.** One failure should stop only tests whose evidence has become invalid because they depend on that failed prerequisite or corrupted state. Independent siblings should continue so a run can surface multiple actionable inconsistencies rather than paying setup/compile/hardware/CI cost repeatedly to discover them one at a time. Report all collected failures clearly enough to distinguish likely common-root failures from independent defects.
+
+Qualification can combine focused tests, contract/conformance tests, integration tests, independent numerical or behavioral oracles, invariants/properties, adversarial cases, compatibility matrices, and measured evidence as the problem requires. Consequence controls the strength of evidence, review, rollback/recovery planning, and independent qualification; it does not make an otherwise simple problem intellectually complex.
+
+### Engineering record
+
+Documentation is a continuous output of the cycle, not an afterthought. Preserve the durable engineering rationale needed for another competent agent to understand and continue the work without repeating expensive discovery. Record, at the appropriate project-owned location:
+
+- the problem as initially observed and any materially revised problem statement;
+- assessment and reassessment conclusions, including scope/ownership changes and important assumptions;
+- research findings with enough provenance to recover the evidence, especially findings that changed the problem or design;
+- engineering rationale: relevant hypotheses, alternatives, tradeoffs, rejected approaches, and the evidence that selected or rejected them; do not preserve a verbatim private reasoning transcript;
+- the final plan and material plan revisions;
+- prototype questions, deliberate shortcuts, observations, trustworthy conclusions, and explicit non-production aspects;
+- material discoveries during execution that changed assumptions or architecture;
+- qualification evidence, failures encountered, root causes, remaining limitations, and deferred/unproven claims;
+- rejected alternatives when forgetting the rejection would make a future agent likely to repeat the same costly path.
+
+Do not turn the record into a diary. Preserve a fact when losing it would materially increase the chance that a future engineer misunderstands the system, repeats expensive research, chooses a disproven design, violates a constraint, or misreads the evidence supporting the current architecture.
+
+The final **cleanup/document** stage reconciles the durable record with the implementation that actually survived qualification and review. Remove prototypes, temporary checkpoints, dumps, duplicated reference code, one-off fixtures/scripts, and other reconnaissance scaffolding unless they have earned a permanent role. Convert discovered failures into regression/conformance evidence where useful. Update governing contracts/specifications and current-state documentation when the work changed them. Ensure issues, PRs, handoffs, plans, and architecture prose do not claim more than protected state and qualified evidence support.
+
+The governing shape is therefore:
+
+```text
+ASSESS
+  -> RESEARCH
+    -> REASSESS
+      -> repeat if scope grew or confidence is low
+        -> confidence gate
+           -> FINAL PLAN, when sufficiently understood
+           -> RAPID PROTOTYPE -> OBSERVE -> RESEARCH -> REASSESS, when not
+        -> EXECUTE
+           -> material surprises loop back to REASSESS / RESEARCH
+        -> QUALIFY / TEST
+        -> REVIEW
+        -> CLEANUP / DOCUMENT
+```
+
+For small, well-understood, low-consequence work, stages may be lightweight or collapse into concise checks; do not manufacture ceremony. Complex or large-scope work may not skip the research/reassessment discovery loop merely because the first assessment appears plausible.
+
+When a repository has a local `AGENTS.md`, alignment card, read-first specification, or other mandatory agent startup authority, carry a compact form of this adaptive cycle into that mandatory local path rather than assuming agents will discover this account-level file.
+
 ## Portfolio execution and readiness gate
 
 Unless a repository's accepted authority says otherwise, meaningful work selection, planning, review, and closure use this portfolio lens in addition to repository-specific rules.
