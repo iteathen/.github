@@ -11,6 +11,38 @@ This repository owns account-level public profile content and default community-
 - Do not add personal data, credentials, private contact details, unpublished artifacts, or machine-specific state.
 - GitHub Actions use least-privilege permissions and immutable full-commit action pins.
 
+## Attention-bounded LEGO architecture
+
+LEGO is the outer architectural discipline for component boundaries. It governs not only ownership, but also universality, replaceability, scope containment, damage-limiting encapsulation, and the amount of context required to reason correctly about one component.
+
+LEGO is recursive at every scale. **The application or system itself is the outermost LEGO.** Its externally supported inputs, outputs, commands, events, data contracts, and lifecycle surfaces are its public **studs/surfaces**. Large application sections, subsystems, services, components, and large objects should preferably be compositions of smaller internal LEGOs rather than monolithic implementations. Each parent brick owns its externally visible responsibility and hides child topology; connection to a parent, sibling, dependency, or consumer occurs only through deliberate studs/surfaces, never by drilling through internals.
+
+A LEGO must fit inside one agent's **full-attention envelope**. An agent working on the brick should be able to load and actively reason about its complete authoritative working set at once: public contract, implementation, invariants, lifecycle/resource rules, tests/conformance, and the immediate dependency and consumer interfaces needed to understand consequences. Merely fitting inside a model's maximum context window is not sufficient.
+
+Treat context fit as a real boundary criterion:
+
+- If one supposed brick requires an agent to spread attention across too many independently meaningful state machines, lifecycles, resources, failure domains, dependency sets, or reasons to change, split it at the strongest real seam.
+- Prefer seams based on semantic ownership, lifecycle, resource/failure containment, substitution, volatility, execution locality, or another independently testable responsibility. Context pressure helps decide **where a real boundary is needed**; it does not justify arbitrary file splitting.
+- LEGO composition is recursive. A parent may own one externally visible responsibility while smaller internal LEGOs own bounded sub-responsibilities. Private children remain encapsulated behind the parent unless they become legitimate public components in their own right.
+- For very large objects or application sections, recursive child LEGOs are preferred when they preserve cohesion while bringing each reasoning unit back inside full attention.
+- Treat studs/surfaces as real contracts. They define what may enter or leave a brick; they must not expose private child topology, mutable internals, or foreign implementation details merely for convenience.
+- Do not split a genuinely indivisible invariant merely to reduce line count. A split is bad when it creates duplicated truth, constant cross-boundary chatter, shared mutable state, or requires neighboring bricks to understand each other's internals.
+- Prefer the smallest coherent, independently comprehensible and replaceable unit, not the smallest possible module.
+- Repository structure and component documentation should let an entering agent identify quickly: what the brick owns, what it does not own, what enters and leaves, which invariants cannot be violated, what can replace it, what failures/resources it contains, and how to prove it still works.
+
+Use the design hierarchy in order:
+
+```text
+LEGO: choose and contain the architectural boundary
+  -> SOLID: structure responsibilities and dependencies inside the brick
+    -> CUPID: make that implementation composable, predictable, idiomatic, and domain-shaped
+      -> KISS: remove remaining unjustified complexity
+```
+
+A lower-level principle may not defeat a higher-level one. A locally simple implementation is not KISS if it breaks LEGO encapsulation; locally elegant CUPID code is not valid if it violates SOLID dependency direction; a SOLID component is still wrong if its responsibility belongs in another LEGO.
+
+When a repository has a local `AGENTS.md` or design-principles authority, carry this rule into that mandatory local startup path rather than assuming agents will discover this account-level file.
+
 ## Portfolio execution and readiness gate
 
 Unless a repository's accepted authority says otherwise, meaningful work selection, planning, review, and closure use this portfolio lens in addition to repository-specific rules.
