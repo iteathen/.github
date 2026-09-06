@@ -60,7 +60,23 @@ ASSESS
 
 Assessment records the apparent problem, ownership, scope, complexity, consequence of being wrong, known unknowns, and current confidence. Reassessment explicitly asks what the research changed: whether the problem, owner, scope, complexity, consequence, dependencies, assumptions, or unknowns changed. If research materially expands the problem, assess and research the expanded problem before proceeding. Continue until scope is stable enough and confidence is high enough to choose the next tool.
 
-Then apply a confidence gate:
+### Recursive decomposition and the fast path
+
+Before applying more process to a large or complex problem, try to make the problem smaller. The discovery cycle is recursive: assess and research enough of the current problem to expose its real topology, then decompose it along genuine ownership, contract, lifecycle, resource/failure, execution, or dependency seams when doing so creates independently comprehensible work units.
+
+Reclassify every child problem independently:
+
+- **Simple + small + understood:** use the normal fast path: make the bounded change, verify it, and finish. Do not require a formal research pass, reassessment report, prototype, or implementation plan merely because the parent problem was difficult.
+- **Complex, large, or materially uncertain:** apply the same assess -> research -> reassess cycle recursively to that child.
+- Stop recursing when the current unit is the smallest coherent unit that is simple enough, small enough, and understood enough for a competent agent to solve directly with high confidence. The target is the **fast-path threshold**, not an arbitrary file/function/task size.
+
+A valid decomposition reduces reasoning burden without destroying cohesion. Do not call a split successful when children still require constant knowledge of one another, duplicate authoritative state, share mutable ownership, or divide an indivisible transition. If decomposition cannot localize the work because boundaries are entangled, treat that as evidence about the architecture rather than distributing the same confusion across more tasks.
+
+The result may be a dependency **web**, not a neat tree. Record enough structure to know what each child owns, what it depends on, what evidence it produces or consumes, which branches can proceed independently, and where results must converge. Complexity and scope should become localized as recursion proceeds; most leaves should return to the fast path while only the irreducibly difficult leaves retain the heavier process.
+
+The parent problem retains integration responsibility. After child work completes, recompose the results and evidence upward: verify dependency edges, interface agreement, integration behavior, completeness, and the original parent acceptance condition. Individually correct leaves do not prove that the parent problem is solved.
+
+Then apply a confidence gate to any remaining non-fast-path unit:
 
 - **Sufficient confidence:** write the final implementation plan at the level of detail actually supported by evidence.
 - **Materially insufficient confidence:** build the smallest quick-and-dirty rapid prototype that crosses enough of the real path to expose hidden constraints. The prototype is reconnaissance, not production architecture. Minimize polish and speculative abstraction; use real interfaces where composition is what must be learned. Record the question it is intended to answer, its deliberate shortcuts, and which conclusions are trustworthy.
@@ -104,7 +120,12 @@ ASSESS
   -> RESEARCH
     -> REASSESS
       -> repeat if scope grew or confidence is low
-        -> confidence gate
+        -> DECOMPOSE at real seams when useful
+           -> RECLASSIFY each child
+              -> FAST PATH for simple + small + understood leaves
+              -> RECURSE from ASSESS for complex / large / uncertain leaves
+           -> INTEGRATE and QUALIFY the parent objective
+        -> for any remaining irreducible non-fast-path unit: confidence gate
            -> FINAL PLAN, when sufficiently understood
            -> RAPID PROTOTYPE -> OBSERVE -> RESEARCH -> REASSESS, when not
         -> EXECUTE
@@ -114,7 +135,7 @@ ASSESS
         -> CLEANUP / DOCUMENT
 ```
 
-For small, well-understood, low-consequence work, stages may be lightweight or collapse into concise checks; do not manufacture ceremony. Complex or large-scope work may not skip the research/reassessment discovery loop merely because the first assessment appears plausible.
+**Simple, small, well-understood work takes the fast path.** It should normally go directly to the bounded change and focused verification; do not manufacture research, planning, prototypes, or process artifacts for routine work. The extended cycle exists for complex, large-scope, or materially uncertain problems, and its purpose is often to recurse until most of that work has become a web of simple fast-path problems.
 
 When a repository has a local `AGENTS.md`, alignment card, read-first specification, or other mandatory agent startup authority, carry a compact form of this adaptive cycle into that mandatory local path rather than assuming agents will discover this account-level file.
 
