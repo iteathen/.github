@@ -1,0 +1,3 @@
+# Use this repository as CODEX_HOME to load the versioned global AGENTS.md
+# and each active repository's thin AGENT_LOCAL.md automatically.
+project_doc_fallback_filenames = ["AGENT_LOCAL.md"]
