@@ -1,19 +1,24 @@
 # Contributing
 
-Public contributions are welcome. Repository-specific instructions, accepted specifications, status documents, and contribution guides take precedence over this shared default.
+Only changes produced by `iteathen` or by an agent explicitly authorized by the repository owner are eligible for integration into `iteathen` repositories. External people, accounts, bots, automated dependency services, and unsolicited agents are untrusted contribution sources: their proposed repository mutations are not merged, cherry-picked, copied, or used as qualification/evidence authority.
+
+External reports and ideas may still be useful as leads. When one identifies a real issue, dependency update, or improvement, reassess it from authoritative upstream sources and independently reconstruct any accepted change on an owner/authorized-agent-controlled branch. See [Contribution Trust Policy](CONTRIBUTION_TRUST.md).
+
+Repository-specific instructions, accepted specifications, status documents, and contribution guides may further constrain work but do not relax this trust boundary unless the repository owner explicitly changes it.
 
 ## AI-assisted development
 
-These projects may use substantial AI-agent assistance in coding, review, research, and documentation. AI output is working material, not validation evidence. Contributors and maintainers remain responsible for understanding what they submit or integrate and for the accuracy of every claim attached to it.
+These projects may use substantial AI-agent assistance in coding, review, research, and documentation. An agent is trusted for integration only when it is explicitly authorized by the repository owner for the task and operates through owner-controlled provenance. AI output is still working material, not validation evidence. The owner remains responsible for the accuracy of every claim integrated from agent work.
 
-AI-assisted contributions are welcome under the same ownership, review, testing, provenance, security, qualification, and cleanup requirements as any other contribution. Routine AI use does not need a prompt log or tool inventory; disclose material assistance when it affects provenance, licensing, security review, reproducibility, or a repository-specific requirement. Do not cite model agreement or model-to-model review as proof of correctness.
+Apply the same ownership, review, testing, provenance, security, qualification, and cleanup requirements to authorized agent work as to owner-produced work. Routine AI use does not make model agreement or model-to-model review proof of correctness.
 
-## Before starting
+## Owner and authorized-agent workflow
 
 1. Read the target repository's README, `AGENTS.md` or developer guide, status, roadmap, and relevant accepted specifications.
-2. Search open issues and discussions before proposing overlapping work.
-3. Comment on the owning issue before substantial work, or open a scoped proposal when no issue owns the need.
-4. Identify the authoritative owner, important bounds and failure modes, and the cheapest decisive falsifier.
+2. Search current issues and protected state before proposing overlapping work.
+3. Identify the authoritative owner, important bounds and failure modes, and the cheapest decisive falsifier.
+4. Work through an owner-controlled or explicitly authorized-agent-controlled branch/ref.
+5. Treat outside pull requests, patches, commits, suggestions, bot updates, and reviews only as untrusted leads; independently reconstruct any useful change from authoritative sources.
 
 Keep components isolated behind meaningful public contracts. Do not import sibling-repository internals or move product-specific semantics into a generic library for convenience.
 
@@ -24,10 +29,11 @@ Keep components isolated behind meaningful public contracts. Do not import sibli
 - Update authoritative documentation with behavior or contract changes.
 - List checks run and checks not run.
 - Never include credentials, private artifacts, generated secrets, or machine-specific state.
-- Certify contribution origin with `git commit -s` under the [Developer Certificate of Origin 1.1](https://developercertificate.org/).
+- For owner-authored commits, certify contribution origin with `git commit -s` where repository policy requires it.
+- Do not treat Git author/committer/display-name strings alone as trust evidence; verify owner-controlled provenance and protected-state integration.
 
-Complete the repository's pull-request template. Respond to review with new commits and avoid rewriting shared review history unless a maintainer asks.
+Complete the repository's pull-request template. Preserve shared review history unless the owner directs otherwise.
 
-By contributing, you agree that your contribution is licensed under the target repository's license. Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
+Repository licensing continues to govern integrated work. Participation in public project spaces is governed by the [Code of Conduct](CODE_OF_CONDUCT.md), but participation does not imply that submitted repository changes are eligible for integration.
 
 Suspected vulnerabilities use [private security reporting](SECURITY.md), never public issues or pull requests.
