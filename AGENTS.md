@@ -12,7 +12,7 @@ Every agent working in a repository should:
 
 `AGENT_LOCAL.md` is intentionally thin. It may describe repository mission, ownership, local hard constraints, authority/current-state routing, dependency boundaries, secrets or environment hazards, and local validation commands. It should not duplicate universal design or process guidance.
 
-Ordinary repositories should not add a root `AGENTS.md`; the global file is the universal agent authority. Tool- or vendor-specific instruction files should remain pointers rather than competing policy copies.
+A repository may keep a root `AGENTS.md` only as a thin compatibility/discovery pointer to this global file. Such a pointer is not repository authority and must not duplicate or redefine universal doctrine. Repository-specific agent context belongs in `AGENT_LOCAL.md`. Tool- or vendor-specific instruction files should likewise remain pointers rather than competing policy copies.
 
 Current explicit project-owner instruction has highest authority for the current task. Repository-specific accepted contracts and hard constraints govern their own domain. They may specialize the facts of a repository, but they should not redefine universal engineering principles locally.
 
