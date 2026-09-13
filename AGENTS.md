@@ -54,6 +54,45 @@ Before choosing a type, width, identity, schema, collection, queue, precision, r
 
 Prefer cheap durable capacity across the reasonably expected domain. Avoid accidental limits inherited from the first example, first consumer, first dataset, first machine, or first GPU. Also avoid speculative infrastructure for possibilities with no credible expected-domain value.
 
+## Compute-synergistic optimization
+
+For performance-critical systems, optimize the representation and the complete producer-to-consumer path rather than treating instructions, caches, storage, and abstractions as isolated costs.
+
+Prefer designs in which one exact structure carries several useful invariants at once. A strong representation can make identity, field extraction, equality, addressing, ordering/locality facts, cardinality, or other derived properties cheap projections of information that already exists. The goal is not merely to move work from one side of a boundary to another; look for designs that remove work on both sides.
+
+Distinguish **integral complexity** from **scope complexity**. Integral complexity is sophistication embedded in the load-bearing representation because it makes the whole system cheaper, more exact, or more composable. Scope complexity is extra helpers, caches, adapters, conversions, repair paths, duplicated metadata, or special cases that compensate for a weaker structure. Accept integral complexity when it is locally owned, exact, reviewable, and measurably reduces wider system work. Do not create opaque cleverness that duplicates semantic truth or makes correctness depend on undocumented bit tricks.
+
+Use this optimization preference order when it fits the domain:
+
+```text
+make useful facts intrinsic to the representation
+  -> reuse one invariant across producer and consumer boundaries
+  -> eliminate redundant derivation, materialization, validation, conversion, and traversal
+  -> trade bounded memory for fewer operations, probes, branches, dependent loads, allocations, or synchronization
+  -> shape data for predictable locality and compiler/runtime optimization
+  -> micro-optimize the remaining hot instructions
+```
+
+Memory and compute are jointly budgeted resources. It is valid to spend memory deliberately when the supported resource envelope allows it and the trade removes more expensive repeated work. Preallocation may buy fixed addresses, stable backing stores, lower load factors, shorter probe chains, no hot-path growth/rehash, fewer lifecycle branches, or better compiler visibility. Judge such a choice by total throughput/latency and resource limits, not by bytes in isolation. Conversely, a memory reduction that adds collision chains, pointer chasing, recomputation, or branch pressure is not automatically an optimization.
+
+Co-design related mechanisms when they are views of the same invariant. For example, if an exact packed identity can also provide cheap extraction and useful address entropy, evaluate the packing, equality test, and table geometry together rather than adding a separate derived representation by default. A hash/fingerprint used as an accelerator is not semantic equality unless injectivity over the supported domain is actually proved; exact identity remains authoritative otherwise.
+
+In extreme hot loops, tiny per-operation savings may be material because invocation multiplicity is enormous. Count loads, stores, masks, shifts, multiplies, branches, function boundaries, allocations, dependent memory accesses, synchronization, and runtime/JIT effects where practical. A repository may define a much lower materiality threshold for such paths than for ordinary code.
+
+Do not evaluate a candidate only at the edited line. Trace the causal neighborhood:
+
+```text
+upstream production and invariants
+  -> changed representation/boundary
+  -> addressing/cache/probe/allocation/runtime behavior
+  -> downstream consumers and repeated work
+  -> memory/locality/JIT/concurrency/cleanup consequences
+```
+
+A meaningful regression blocks further stacking until disposition. Audit the exact diff and expanded causal neighborhood, reassess the premise, then use deliberate paired/repeated measurement under comparable conditions. If the candidate still regresses on the objective and no higher-priority correctness/resource requirement justifies it, record the finding and remove or supersede the active regression before continuing.
+
+Prefer universal lower-layer implementation for genuinely consumer-neutral native or accelerated primitives. If a product discovers a capability that materially benefits from native, GPU, SIMD, compiler, runtime, memory, or other specialized implementation, first ask whether the capability belongs in a reusable foundational library with a public contract. Do not embed one-off native escape hatches in consumers when the general primitive has a natural lower-layer owner.
+
 ## LEGO ownership and boundaries
 
 LEGO is the outer architectural discipline. Every meaningful component should have one coherent owned responsibility, visible authority for its state/lifecycle, deliberate public studs/surfaces, explicit dependencies, and bounded failure/resource/cleanup behavior where material.
