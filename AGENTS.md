@@ -54,6 +54,46 @@ Before choosing a type, width, identity, schema, collection, queue, precision, r
 
 Prefer cheap durable capacity across the reasonably expected domain. Avoid accidental limits inherited from the first example, first consumer, first dataset, first machine, or first GPU. Also avoid speculative infrastructure for possibilities with no credible expected-domain value.
 
+## Performance optimization and compute synergy
+
+For materially performance-sensitive code, optimize the complete exact system rather than isolated instructions, arrays, or byte counts.
+
+Prefer **integrated invariants**: when several computations are different views of the same stable fact, choose a representation where one authoritative structure can carry multiple useful consequences naturally. A good representation can make production, storage, addressing, filtering, equality support, decoding, metadata, and publication cheaper at the same time. Do not merely move compute from one end of a pipeline to the other when the structure can eliminate it on both ends.
+
+Essential complexity that is integral to one coherent representation is often preferable to scattered incidental complexity and repeated derivation across callers. Keep one semantic owner; consumers should use its stable public projection rather than independently reconstructing the same invariant.
+
+Treat memory as an engineering resource that may be deliberately spent to reduce compute, dependent memory access, branching, allocation, synchronization, or collision work. Larger sparse tables, direct-address structures, retained derived metadata, or caches may be better designs when they reduce total system cost within an explicit resource budget. Bytes saved are not automatically an optimization, and bytes added are not automatically a regression; judge the mission-relevant trade with measured evidence.
+
+For fixed hot-path storage, prefer the lifecycle `prepare/reserve -> perform any initialization-time growth or rehash -> seal -> execute without recursive/hot-path growth`. Preallocation is valuable when it removes allocation, resize, rehash, or lifecycle uncertainty from the critical path. Reservation sizing is a separate optimization question from whether preallocation itself is sound.
+
+For JIT/runtime-hosted systems, expose machine-visible invariants deliberately: stable shapes, fixed widths, typed numeric storage, monomorphic calls, constant offsets/masks, deliberate signed/unsigned domains, predictable branches, and allocation-free hot paths where appropriate. Optimize for the machine operations the runtime can actually emit, not for source-level abstraction aesthetics. Small measured gains are material when the operation executes at extreme frequency; the local project may set an explicit threshold.
+
+Hashes, fingerprints, IDs, packed fields, and addresses may be co-designed, but exact identity remains whatever the governing semantic contract says it is. A hash or fingerprint is only equality authority when exact equivalence has been proved; otherwise it remains an accelerator/filter and exact canonical content resolves collisions.
+
+### Regression discipline for hot paths
+
+A candidate that materially worsens wall time, CPU, memory, work count, allocation, contention, or scaling is provisional. Stop stacking changes on top of it. Inspect the exact diff and the expanded causal neighborhood: upstream production/distribution, the changed boundary and runtime/JIT effects, downstream cache/table/lifetime behavior, sibling/error paths, and second-order effects. Then use deliberately paired/repeated measurements under matching conditions with exact semantic/work counters and relevant resource evidence.
+
+If the candidate remains worse after this audit, preserve the useful negative finding and remove/revert the active regressor before continuing. Correctness success does not erase a performance regression, and a performance gain does not relax correctness. Distinguish a wrong idea from a good idea implemented at the wrong boundary or with the wrong surrounding representation.
+
+Optimize synergistically in this order when the domain permits:
+
+```text
+eliminate work through exact structural invariants
+  -> make one representation serve several required views
+  -> spend bounded memory to remove remaining compute/dependencies
+  -> specialize layout/addressing for the execution engine
+  -> micro-optimize the surviving operations
+```
+
+Do not use this ordering mechanically when a different ownership/correctness constraint dominates; it is a performance-selection heuristic inside an already-valid design.
+
+### Native implementation boundary
+
+Stay in the highest-level maintained environment that can express the required mechanism efficiently. A native implementation is justified only when its system-level gain is materially better, realistic optimization avenues in the maintained environment have been exhausted or cannot provide the capability, and the ownership/build/portability/lifecycle cost is warranted.
+
+When a native mechanism is justified and its semantics are consumer-neutral, implement it in the natural reusable library/runtime owner behind a public contract rather than as a one-consumer escape hatch. The product that discovered the need supplies acceptance criteria and evidence; the foundational owner generalizes and qualifies the reusable capability.
+
 ## LEGO ownership and boundaries
 
 LEGO is the outer architectural discipline. Every meaningful component should have one coherent owned responsibility, visible authority for its state/lifecycle, deliberate public studs/surfaces, explicit dependencies, and bounded failure/resource/cleanup behavior where material.
