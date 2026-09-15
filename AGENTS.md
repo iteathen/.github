@@ -1,20 +1,23 @@
 # Universal Agent Engineering Authority
 
-This is the account-global engineering and agent guidance for `iteathen` repositories. It owns reusable design principles, engineering process, evidence discipline, execution judgment, review, and cleanup guidance. Repository files should not copy or restate this doctrine.
+This is the account-global engineering and agent guidance for `iteathen` repositories. It owns reusable design principles, engineering process, evidence discipline, execution judgment, review, and cleanup guidance. Repository files should normally reference this doctrine; the designated accessibility fallback below permits deliberate local copies when needed.
 
 ## Global-to-local routing
 
-Every agent working in a repository should:
+Current explicit project-owner instructions have highest authority for the task. Use the applicable route:
 
-1. Apply this global guidance.
-2. Read `./AGENT_LOCAL.md` from the active repository when it exists.
-3. Read the accepted repository specifications, ADRs, contracts, current-state files, and task-specific authority named by that local file or by the task.
+- **Global authority accessible:** explicit owner instruction → this global `AGENTS.md` → repository `AGENT_LOCAL.md` specialization → accepted repository specifications/contracts → current-state/task routing.
+- **Global authority inaccessible:** explicit owner instruction → designated self-contained `AGENT_LOCAL.md` fallback → accepted repository specifications/contracts → current-state/task routing.
 
-`AGENT_LOCAL.md` is intentionally thin. It may describe repository mission, ownership, local hard constraints, authority/current-state routing, dependency boundaries, secrets or environment hazards, and local validation commands. It should not duplicate universal design or process guidance.
+Read the active repository's `AGENT_LOCAL.md` when present and the accepted specifications, ADRs, contracts, and current-state/task files it or the task identifies. Accepted contracts govern their own domain; routing files do not promote research or proposals into accepted authority.
 
-A repository may keep a root `AGENTS.md` only as a thin compatibility/discovery pointer to this global file. Such a pointer is not repository authority and must not duplicate or redefine universal doctrine. Repository-specific agent context belongs in `AGENT_LOCAL.md`. Tool- or vendor-specific instruction files should likewise remain pointers rather than competing policy copies.
+`AGENT_LOCAL.md` should normally remain thin: repository mission, ownership, local hard constraints, authority/current-state routing, dependency boundaries, secrets or environment hazards, and local validation commands. Unnecessary duplication of universal doctrine should be centralized or removed.
 
-Current explicit project-owner instruction has highest authority for the current task. Repository-specific accepted contracts and hard constraints govern their own domain. They may specialize the facts of a repository, but they should not redefine universal engineering principles locally.
+Where execution environments cannot reliably access the global file, a repository may intentionally include enough universal doctrine in a self-contained `AGENT_LOCAL.md` to remain fully operational. This is an accessibility/resilience fallback, not competing authority or a mandatory repository pattern. When both files are accessible, this global file remains canonical for universal doctrine and the local file supplies repository-specific specialization. While the global file is inaccessible, the designated local fallback is operative guidance.
+
+A fallback must explicitly identify its purpose, canonical source, and the source revision or last synchronization assessment, distinguish local specialization from copied doctrine, and avoid silent divergence. When global doctrine changes materially, assess known fallback copies for synchronization and record unresolved differences or access constraints. Do not classify an intentional fallback as stale redundancy or remove it merely because equivalent guidance exists globally; first establish reliable global access for its consuming agents and preserve their ability to operate.
+
+A repository may keep a root `AGENTS.md` as a thin compatibility/discovery pointer to the global authority and local specialization or fallback. Tool- or vendor-specific instruction files should likewise route to those authorities rather than create competing policy copies. Repository-specific accepted contracts and hard constraints may specialize repository facts; they should not independently redefine universal doctrine.
 
 ## Governing design hierarchy
 
@@ -127,7 +130,7 @@ Context and tokens are engineering resources, not objectives. Optimize trustwort
 Reduce pressure in this order when practical:
 
 ```text
-remove duplication
+remove unnecessary duplication
   -> reuse authority and evidence
   -> batch coherent work and tests
   -> narrow context and output
@@ -137,7 +140,7 @@ remove duplication
   -> pause on a real blocker
 ```
 
-Do not cut required correctness, safety, evidence, recovery, or cleanup merely to preserve scope or save tokens. Avoid repeated unchanged reads, repeated tests for reassurance, duplicate documents, and large context loads when exact targeted material is sufficient.
+Do not cut required correctness, safety, evidence, recovery, or cleanup merely to preserve scope or save tokens. Avoid repeated unchanged reads, repeated tests for reassurance, unnecessary duplicate documents, and large context loads when exact targeted material is sufficient.
 
 ## Testing, qualification, and repair loops
 
@@ -182,6 +185,8 @@ Cleanup is an owned state transition, not cosmetic deletion.
 For material task-created, temporary, generated, diagnostic, partial, remote, sensitive, external, or coordination state, choose an appropriate disposition: remove, restore, retain as authority/evidence/recovery, archive, quarantine, transfer, supersede, retain temporarily with a clear trigger, or protect unchanged.
 
 Protect user/pre-existing work, project authority, useful evidence, recovery state, shared resources, protected branches, and active dependents. Historically useful stale material may be archived with provenance rather than erased. A clean diff, successful API response, green test, exited process, or merged PR does not by itself prove cleanup of asynchronous, remote, shared, or external state.
+
+Designated accessibility fallbacks are retained operational authority under the global-to-local routing policy, not disposable duplication.
 
 When unexpected state appears, assess before destructive cleanup. Do not delete merely because rollback looks procedurally tidy.
 
@@ -260,4 +265,4 @@ A repository-local statement belongs in `AGENT_LOCAL.md` when it answers questio
 - What local commands qualify it?
 - What repository-specific language, environment, secret, packaging, or lifecycle constraint applies here?
 
-If a statement instead describes **how good engineering should generally be done**, it belongs here in the global authority rather than in a repository-local agent file.
+If a statement instead describes **how good engineering should generally be done**, its canonical home is this global authority. A designated self-contained `AGENT_LOCAL.md` may also carry it under the accessibility fallback and synchronization policy above.
