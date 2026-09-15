@@ -6,11 +6,11 @@ GitHub uses applicable community defaults when a project does not supply its own
 
 ## Global agent instructions
 
-`AGENTS.md` is the single versioned universal engineering authority for the account. Repository-specific agent context belongs in each repository's thin `AGENT_LOCAL.md`.
+`AGENTS.md` is the canonical versioned universal engineering authority for the account. Repository-specific context normally belongs in a thin `AGENT_LOCAL.md`; a designated self-contained accessibility fallback is also allowed under the [global-to-local routing policy](AGENTS.md#global-to-local-routing).
 
 For Codex, the runtime-global instruction location is `$CODEX_HOME/AGENTS.md`. The cleanest setup is to use a checkout of this repository as `CODEX_HOME`; the included `config.toml` declares `AGENT_LOCAL.md` as a project-document fallback so Codex loads the active repository's local context automatically.
 
-If an environment uses a different `CODEX_HOME`, point or synchronize its global `AGENTS.md` and `config.toml` to these canonical files rather than copying the universal doctrine into individual repositories.
+If an environment uses a different `CODEX_HOME`, point or synchronize its global `AGENTS.md` and relevant configuration to these canonical files where accessible. If reliable global access is unavailable, retain a designated self-contained `AGENT_LOCAL.md` fallback and maintain its provenance and synchronization as the global policy requires.
 
 - [Universal agent authority](AGENTS.md).
 - [This repository's local agent context](AGENT_LOCAL.md).
