@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/iteathen/.github/main/evidence/claim-record.schema.json",
+  "title": "iteathen evidence claim registry",
+  "type": "object",
+  "required": ["schema_version", "repository", "claims"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "repository": { "type": "string", "minLength": 1 },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "evidence_class", "status", "falsifier", "evidence", "limitations"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "claim": { "type": "string", "minLength": 1 },
+          "evidence_class": {
+            "enum": ["UNVALIDATED", "INTERNAL-QUALIFICATION", "REFERENCE-GROUNDED", "FORMALLY-CHECKED", "HARDWARE-MEASURED", "EXTERNALLY-REPRODUCED"]
+          },
+          "status": { "type": "string", "minLength": 1 },
+          "oracle": { "type": ["string", "null"] },
+          "revision": { "type": ["string", "null"] },
+          "falsifier": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "limitations": { "type": "array", "items": { "type": "string" } },
+          "external_reproduction": { "type": "boolean", "default": false }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
