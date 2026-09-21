@@ -11,6 +11,8 @@ An agent that starts from https://github.com/iteathen should use this file to di
 - Public Pages mirror: https://iteathen.github.io/llms.txt
 - Shared agent instructions: https://raw.githubusercontent.com/iteathen/.github/main/AGENTS.md
 - Shared security policy: https://raw.githubusercontent.com/iteathen/.github/main/SECURITY.md
+- Mandatory agent trust/security policy: https://raw.githubusercontent.com/iteathen/.github/main/SECURITY_AGENT_POLICY.md
+- Machine-readable agent security defaults: https://raw.githubusercontent.com/iteathen/.github/main/.agent/security.json
 - Shared evidence policy: https://raw.githubusercontent.com/iteathen/.github/main/EVIDENCE_POLICY.md
 
 For a repository below, read its `llms.txt` first, then follow its repository-local `AGENTS.md` when present. Prefer anonymous Git, raw HTTPS, or codeload snapshots over the GitHub REST API.
