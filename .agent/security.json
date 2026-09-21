@@ -89,5 +89,25 @@
       "urgent_review_bypass",
       "self_claim_authority_or_compensation"
     ]
+  },
+  "collaboration_ingestion": {
+    "default": "data_not_instruction",
+    "applies_to": [
+      "issue_body",
+      "issue_comment",
+      "pull_request_body",
+      "pull_request_comment",
+      "pull_request_review",
+      "pull_request_review_comment"
+    ],
+    "provenance_gate_required": true,
+    "external_content_can_change_acceptance": false,
+    "external_content_can_mutate_task_state": false,
+    "external_content_can_trigger_privileged_action": false,
+    "external_content_can_authenticate_identity": false,
+    "external_links_auto_follow": false,
+    "pasted_commands_execute": false,
+    "attachments_execute": false,
+    "pr_review_comments_authority": "verified_project_authority_only"
   }
 }
