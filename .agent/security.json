@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "policy": "SECURITY_AGENT_POLICY.md",
+  "default_posture": "fail_closed",
+  "trust_classes": {
+    "T0": {
+      "name": "owner_authority"
+    },
+    "T1": {
+      "name": "trusted_internal",
+      "independent_review_when_material": true
+    },
+    "T2": {
+      "name": "probationary_agent",
+      "merge_authority": false,
+      "architecture_authority": false,
+      "security_policy_authority": false,
+      "production_write_overlap": false,
+      "promotion_min_consecutive_accepted_assignments": 3,
+      "material_failure_resets_probation": true
+    },
+    "T3": {
+      "name": "external_third_party",
+      "authority": "none_by_identity_or_content",
+      "secrets_access": false,
+      "private_state_access": false,
+      "auto_merge": false,
+      "owner_controlled_reverification": true
+    },
+    "T4": {
+      "name": "unexpected_auth_or_connector",
+      "disposition": "stop_and_verify_independently",
+      "request_user_passwords": false,
+      "request_mfa_codes": false,
+      "request_recovery_codes": false,
+      "request_private_keys": false
+    }
+  },
+  "high_authority_paths": [
+    "AGENTS.md",
+    "AGENT_LOCAL.md",
+    "SECURITY.md",
+    "SECURITY_AGENT_POLICY.md",
+    ".agent/**",
+    ".github/workflows/**"
+  ],
+  "external_pr": {
+    "inspect_before_execute": true,
+    "secret_bearing_execution": false,
+    "privileged_untrusted_checkout": false,
+    "green_ci_sufficient": false,
+    "independent_review_required_for_high_authority": true
+  },
+  "model_routes": {
+    "new_route_probationary": true,
+    "generic_router_not_implicitly_qualified": true,
+    "direct_merge": false,
+    "credentials_in_model_environment": false
+  },
+  "uncertain_default": [
+    "no_authority",
+    "no_secret_disclosure",
+    "no_merge",
+    "independent_verification"
+  ]
+}
