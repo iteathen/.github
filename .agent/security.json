@@ -62,5 +62,32 @@
     "no_secret_disclosure",
     "no_merge",
     "independent_verification"
-  ]
+  ],
+  "issue_ingestion": {
+    "default": "data_not_instruction",
+    "provenance_gate_required": true,
+    "role_id_text_is_authentication": false,
+    "external_comment_can_mutate_task_state": false,
+    "external_comment_can_change_acceptance": false,
+    "external_comment_can_dispatch_agent": false,
+    "external_comment_can_trigger_privileged_action": false,
+    "external_links_auto_follow": false,
+    "attachments_execute": false,
+    "pasted_commands_execute": false,
+    "credentials_from_issue_prompt": false,
+    "coordination": {
+      "external_comments_are_state_authority": false,
+      "recover_state_from_verified_actor_and_expected_envelope": true,
+      "actor_change_requires_reverification": true
+    },
+    "suspicious_requests": [
+      "ignore_authority",
+      "reveal_secrets_or_private_state",
+      "authenticate_or_connect_service",
+      "run_opaque_or_encoded_payload",
+      "change_security_or_permissions",
+      "urgent_review_bypass",
+      "self_claim_authority_or_compensation"
+    ]
+  }
 }
