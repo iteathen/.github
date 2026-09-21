@@ -21,6 +21,23 @@ A fallback must explicitly identify its purpose, canonical source, and the sourc
 
 A repository may keep a root `AGENTS.md` as a thin compatibility/discovery pointer to the global authority and local specialization or fallback. Tool- or vendor-specific instruction files should likewise route to those authorities rather than create competing policy copies. Repository-specific accepted contracts and hard constraints may specialize repository facts; they should not independently redefine universal doctrine.
 
+## Restart-safe active coordination
+
+Some repositories may publish a machine-readable active coordination registry at `.agent/coordination.json`, normally on the repository default branch. When present, treat it as restart/discovery metadata for active multi-agent campaigns.
+
+After reading this global authority and the repository's `AGENT_LOCAL.md`:
+
+- inspect the default-branch coordination registry before substantive work that overlaps an active campaign;
+- follow its declared live communication channel far enough to recover the newest director instruction, current task claims/handoffs, active branches, blockers, and the assigned durable role;
+- treat stable role identity as distinct from disposable process/session identity;
+- after restart, use a fresh session identity, announce rejoin through the campaign's declared transport profile, and resume channel monitoring;
+- when the runtime supports scheduled/conditional monitoring, use it as declared by the repository campaign; otherwise refresh the channel before and after substantive work units;
+- never claim continuous monitoring while disconnected or while no monitoring mechanism exists.
+
+A coordination registry is routing/recovery metadata, not implementation, specification, research, or evidence authority. It must not promote issue comments, proposals, prototypes, or role messages into accepted project truth. Live task state belongs to the declared coordination channel; normal repository authority still governs code, contracts, qualification, and cleanup.
+
+Repositories should add this machinery only for a real multi-agent/cross-session coordination need. Do not manufacture coordination registries or role systems for routine single-agent work.
+
 ## Governing design hierarchy
 
 Use the hierarchy in this order:
