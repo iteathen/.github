@@ -1,5 +1,7 @@
 # iteathen open-source projects
 
+> **AI agents and automated readers:** start with the [machine-readable public repository index](https://raw.githubusercontent.com/iteathen/.github/main/llms.txt). It links to every public repository's anonymous, API-independent access entry point.
+
 These projects develop JavaScript GPU libraries, search software, and development automation. They are at different stages; each project's README and status document describe what is available.
 
 ## Libraries and applications under development

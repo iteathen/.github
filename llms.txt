@@ -1,20 +1,48 @@
-# .github
+# iteathen — public repository index
 
-> Public source index for LLMs and software agents. Read-only access requires no GitHub authentication.
+> Canonical machine-readable discovery index for the public open-source repositories owned by `iteathen`.
 
-## Primary entry points
+An agent that starts from https://github.com/iteathen should use this file to discover repositories. Read-only access does not require a GitHub account, connector, token, or REST API.
 
-- [README.md](https://raw.githubusercontent.com/iteathen/.github/main/README.md): project overview and documentation entry point.
-- [AGENTS.md](https://raw.githubusercontent.com/iteathen/.github/main/AGENTS.md): repository-specific agent instructions and authority rules.
-- [Agent access](https://raw.githubusercontent.com/iteathen/.github/main/.agent/ACCESS.md): anonymous access routes and precedence notes.
-- [LICENSE](https://raw.githubusercontent.com/iteathen/.github/main/LICENSE): license terms.
+## Discovery
 
-## Anonymous source access
+- Human profile: https://github.com/iteathen
+- This index: https://raw.githubusercontent.com/iteathen/.github/main/llms.txt
+- Shared agent instructions: https://raw.githubusercontent.com/iteathen/.github/main/AGENTS.md
+- Shared security policy: https://raw.githubusercontent.com/iteathen/.github/main/SECURITY.md
 
-- Repository: https://github.com/iteathen/.github
-- Git clone: `https://github.com/iteathen/.github.git`
-- Raw files: https://raw.githubusercontent.com/iteathen/.github/main/
-- ZIP snapshot: https://codeload.github.com/iteathen/.github/zip/refs/heads/main
-- tar.gz snapshot: https://codeload.github.com/iteathen/.github/tar.gz/refs/heads/main
+For a repository below, read its `llms.txt` first, then follow its repository-local `AGENTS.md` when present. Prefer anonymous Git, raw HTTPS, or codeload snapshots over the GitHub REST API.
 
-Prefer Git, raw HTTPS, or codeload over the GitHub REST API when possible. Follow repository-local authority and agent instructions.
+## Public repositories
+
+- [.github](https://raw.githubusercontent.com/iteathen/.github/main/llms.txt) — account/community metadata and shared policies.
+- [AgentXchange](https://raw.githubusercontent.com/iteathen/AgentXchange/main/llms.txt)
+- [Connect4](https://raw.githubusercontent.com/iteathen/Connect4/main/llms.txt)
+- [CUDA-Algorithms](https://raw.githubusercontent.com/iteathen/CUDA-Algorithms/main/llms.txt)
+- [CUDA-JS](https://raw.githubusercontent.com/iteathen/CUDA-JS/main/llms.txt)
+- [CUDA-JS-Tensor](https://raw.githubusercontent.com/iteathen/CUDA-JS-Tensor/main/llms.txt)
+- [CUDA-MCGS](https://raw.githubusercontent.com/iteathen/CUDA-MCGS/main/llms.txt)
+- [CUDA-MM](https://raw.githubusercontent.com/iteathen/CUDA-MM/main/llms.txt)
+- [DevBridge](https://raw.githubusercontent.com/iteathen/DevBridge/main/llms.txt)
+- [IsoGraph](https://raw.githubusercontent.com/iteathen/IsoGraph/main/llms.txt)
+- [NEES](https://raw.githubusercontent.com/iteathen/NEES/main/llms.txt)
+- [UCI-Arena-Vector](https://raw.githubusercontent.com/iteathen/UCI-Arena-Vector/main/llms.txt)
+- [cuda-comm](https://raw.githubusercontent.com/iteathen/cuda-comm/main/llms.txt)
+- [cuda-data](https://raw.githubusercontent.com/iteathen/cuda-data/main/llms.txt)
+- [cuda-graph-analytics](https://raw.githubusercontent.com/iteathen/cuda-graph-analytics/main/llms.txt)
+- [cuda-io](https://raw.githubusercontent.com/iteathen/cuda-io/main/llms.txt)
+- [cuda-media](https://raw.githubusercontent.com/iteathen/cuda-media/main/llms.txt)
+- [cuda-nn](https://raw.githubusercontent.com/iteathen/cuda-nn/main/llms.txt)
+- [cuda-ray](https://raw.githubusercontent.com/iteathen/cuda-ray/main/llms.txt)
+- [cuda-rng](https://raw.githubusercontent.com/iteathen/cuda-rng/main/llms.txt)
+
+## Generic anonymous access
+
+For repository `<repo>`:
+
+- Git: `https://github.com/iteathen/<repo>.git`
+- Raw: `https://raw.githubusercontent.com/iteathen/<repo>/main/`
+- ZIP: `https://codeload.github.com/iteathen/<repo>/zip/refs/heads/main`
+- tar.gz: `https://codeload.github.com/iteathen/<repo>/tar.gz/refs/heads/main`
+
+Repository-local authority takes precedence over this account index.
