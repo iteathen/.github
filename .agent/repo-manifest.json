@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "repository": "iteathen/.github",
+  "visibility": "public",
+  "default_branch": "main",
+  "canonical": "https://github.com/iteathen/.github",
+  "anonymous_access": {
+    "git": "https://github.com/iteathen/.github.git",
+    "raw_base": "https://raw.githubusercontent.com/iteathen/.github/main/",
+    "zip": "https://codeload.github.com/iteathen/.github/zip/refs/heads/main",
+    "tar_gz": "https://codeload.github.com/iteathen/.github/tar.gz/refs/heads/main"
+  },
+  "entrypoints": {
+    "readme": "README.md",
+    "agents": "AGENTS.md",
+    "llm_index": "llms.txt",
+    "access": ".agent/ACCESS.md"
+  },
+  "authentication_required_for_read": false,
+  "api_required_for_read": false
+}
