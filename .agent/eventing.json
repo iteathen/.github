@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "default_mode": "event_first",
+  "event_is_authority": false,
+  "consume_rule": "wake_then_refetch_authoritative_state",
+  "requirements": {
+    "provenance_check": true,
+    "role_interest_filter": true,
+    "duplicate_coalescing": true,
+    "idempotent_by_event_or_revision": true,
+    "no_untrusted_payload_execution": true
+  },
+  "polling": {
+    "primary_mechanism": false,
+    "allowed_only_for": [
+      "missed_event_recovery",
+      "restart_reconciliation",
+      "event_router_failure",
+      "runtime_without_native_event_delivery"
+    ],
+    "cadence": "sparse"
+  },
+  "runtime_without_native_webhook": {
+    "behavior": "low_frequency_event_bus_check",
+    "must_not_claim_native_event_delivery": true
+  }
+}
