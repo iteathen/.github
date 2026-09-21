@@ -2,6 +2,8 @@
 
 This is the account-global engineering and agent guidance for `iteathen` repositories. It owns reusable design principles, engineering process, evidence discipline, execution judgment, review, and cleanup guidance. Repository files should normally reference this doctrine; the designated accessibility fallback below permits deliberate local copies when needed.
 
+For claim strength, evidence classes, verifier independence, and external-validation terminology, the shared authority is [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md). Repository-local `EVIDENCE.md` and `evidence/claims.json` files apply that policy to specific project claims.
+
 ## Global-to-local routing
 
 Current explicit project-owner instructions have highest authority for the task. Use the applicable route:
