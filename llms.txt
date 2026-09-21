@@ -8,6 +8,7 @@ An agent that starts from https://github.com/iteathen should use this file to di
 
 - Human profile: https://github.com/iteathen
 - This index: https://raw.githubusercontent.com/iteathen/.github/main/llms.txt
+- Public Pages mirror: https://iteathen.github.io/llms.txt
 - Shared agent instructions: https://raw.githubusercontent.com/iteathen/.github/main/AGENTS.md
 - Shared security policy: https://raw.githubusercontent.com/iteathen/.github/main/SECURITY.md
 - Shared evidence policy: https://raw.githubusercontent.com/iteathen/.github/main/EVIDENCE_POLICY.md
@@ -26,6 +27,7 @@ For a repository below, read its `llms.txt` first, then follow its repository-lo
 - [CUDA-MM](https://raw.githubusercontent.com/iteathen/CUDA-MM/main/llms.txt)
 - [DevBridge](https://raw.githubusercontent.com/iteathen/DevBridge/main/llms.txt)
 - [IsoGraph](https://raw.githubusercontent.com/iteathen/IsoGraph/main/llms.txt)
+- [iteathen.github.io](https://raw.githubusercontent.com/iteathen/iteathen.github.io/main/llms.txt) — static public mirror of this account-wide discovery index.
 - [NEES](https://raw.githubusercontent.com/iteathen/NEES/main/llms.txt)
 - [UCI-Arena-Vector](https://raw.githubusercontent.com/iteathen/UCI-Arena-Vector/main/llms.txt)
 - [cuda-comm](https://raw.githubusercontent.com/iteathen/cuda-comm/main/llms.txt)
