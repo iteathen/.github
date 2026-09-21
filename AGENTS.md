@@ -6,6 +6,8 @@ For claim strength, evidence classes, verifier independence, and external-valida
 
 For agent trust, third-party accounts, external contributions, credential/connectors, untrusted code execution, model-provider routing, and security incident handling, the mandatory shared authority is [SECURITY_AGENT_POLICY.md](SECURITY_AGENT_POLICY.md). Its machine-readable defaults are in `.agent/security.json`. Repository-local policy may tighten but must not silently weaken it.
 
+For multi-agent coordination cadence, prefer event-triggered wakeups over polling. Machine-readable defaults are in `.agent/eventing.json`; event records wake agents but never replace repository authority or provenance checks.
+
 ## Global-to-local routing
 
 Current explicit project-owner instructions have highest authority for the task. Use the applicable route:
