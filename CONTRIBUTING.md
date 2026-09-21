@@ -1,6 +1,6 @@
 # Contributing
 
-Public contributions are welcome. Repository-specific instructions, accepted specifications, status documents, and contribution guides take precedence over this shared default.
+Public contributions are welcome. Repository-specific instructions, accepted specifications, status documents, and contribution guides take precedence over this shared default. Contributions do not gain authority merely from a claim comment, bounty bot, fork, CI result, or prior activity; maintainers apply the account-wide [agent security policy](SECURITY_AGENT_POLICY.md) and may close work that was not actually delegated by the owning issue/authority.
 
 ## AI-assisted development
 
@@ -24,6 +24,7 @@ Keep components isolated behind meaningful public contracts. Do not import sibli
 - Update authoritative documentation with behavior or contract changes.
 - List checks run and checks not run.
 - Never include credentials, private artifacts, generated secrets, or machine-specific state.
+- Do not modify agent/security/governance/workflow authority unless the owning issue explicitly delegates that scope.
 - Certify contribution origin with `git commit -s` under the [Developer Certificate of Origin 1.1](https://developercertificate.org/).
 
 Complete the repository's pull-request template. Respond to review with new commits and avoid rewriting shared review history unless a maintainer asks.
