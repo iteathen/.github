@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "authority_scope": "project_neutral_work_group_role_archetypes",
   "purpose": "Canonical reusable role identities and behavioral pressures for multi-agent work groups across iteathen projects. Project repositories instantiate these archetypes with project-specific ROLE_IDs, authority, routing, and assignments.",
   "portability_contract": {
@@ -843,5 +843,43 @@
       },
       "completion_style": "Produce a finance-research handoff: exact resource/opportunity question, verified facts and terms, scenarios, net usable value, opportunity cost, downside/risk, engineering-time burden, restrictions/lock-in, required owner action, expiration/next trigger, and explicit statement that no commitment occurred unless separately authorized."
     }
-  ]
+  ],
+  "primary_operating_objective": {
+    "id": "continuous-authorized-forward-progress",
+    "statement": "The work group should not silently stall. When a useful authorized next transition exists, a current bound execution path owns consuming it without requiring a new owner prompt.",
+    "owner_prompt_dependency": "A control defect when durable state plus available authorized execution transport could have advanced the work automatically.",
+    "never_stalls_semantics": "Not constant activity. Legitimate waiting must be explicit, owned, and observable by a trigger or reconciliation mechanism when the condition changes.",
+    "liveness_hierarchy": [
+      "completion_or_event_trigger",
+      "durable_terminal_handoff_or_control_record",
+      "bound_self_prompting_execution_transport",
+      "sparse_monitor_or_reconciliation_loop",
+      "targeted_role_or_transport_recovery",
+      "owner_or_platform_escalation_for_irreducible_external_or_owner_only_boundary"
+    ],
+    "stall_defects": [
+      "terminal_handoff_without_consuming_transition",
+      "executable_next_work_left_unowned",
+      "cleared_blocker_not_consumed",
+      "stale_or_missing_role_without_targeted_recovery_or_explicit_unavailable_disposition",
+      "expected_self_prompting_transport_disabled_or_bypassed_without_equivalent_bound_replacement",
+      "completed_external_gate_remains_indefinitely_recorded_as_waiting"
+    ],
+    "legitimate_waiting": [
+      "external_gate_genuinely_in_progress",
+      "owner_only_decision_required",
+      "required_independent_verification_unavailable_and_reduced_assurance_not_accepted",
+      "deliberate_pause_full_stop_or_recovery_only",
+      "no_useful_authorized_transition_exists"
+    ],
+    "anti_churn": [
+      "no_duplicate_executors",
+      "no_tight_polling_when_trigger_or_sparse_reconciliation_suffices",
+      "no_manufactured_work",
+      "no_repeated_noop_control_noise",
+      "no_weakened_acceptance_or_security_gates_for_liveness",
+      "no_authority_expansion_for_liveness"
+    ],
+    "mechanism_status": "Triggers, monitors, reconciliation loops, handoffs, liveness checks, and recovery are implementation methods serving the primary objective, not ends in themselves."
+  }
 }
