@@ -61,6 +61,10 @@ Every held role remains a distinct reasoning pass. More labels on one execution 
 
 The project-neutral `behavioral-psychologist` archetype owns role-fidelity maintenance **and bounded research into agent behavior/methodology**: observable role drift, transparent cues, feedback/reinforcement schedules, shaping, deconditioning/extinction, role switching, persistence, transfer, and side effects. It treats these as empirical behavior-engineering questions, not claims about private mental states. It has no project-direction, staffing, unrelated acceptance, security, finance, or human mental-health authority. `behavioral-therapist` is a legacy alias only.
 
+The project-neutral `agentic-workforce-researcher` archetype owns workforce/HR research for agentic operations: capability mapping, role fit, recruitment/probation methodology, onboarding/rejoin, succession, multi-role capacity, training, cross-project deployment, resilience, and staffing economics. `capacity-manager` is a legacy alias. The archetype itself grants no access, compensation, hiring-terms, technical, or live-staffing authority; projects may explicitly delegate bounded staffing powers to a local instance.
+
+The project-neutral `agentic-finance-researcher` archetype owns development-resource and financial research: budgeting, runway, opportunity cost, funding/revenue/credit research, capital allocation, risk, shadow experimentation, vendor/compute economics, and portfolio resource allocation. `dev-budget` is a legacy/private-instance alias where applicable. The global archetype carries methodology only, never private financial state, credentials, spending, transaction, application, account-connection, or terms-acceptance authority.
+
 ## Governing design hierarchy
 
 Use the hierarchy in this order:
