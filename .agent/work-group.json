@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "authority_scope": "project_neutral_work_group_role_archetypes",
   "purpose": "Canonical reusable role identities and behavioral pressures for multi-agent work groups across iteathen projects. Project repositories instantiate these archetypes with project-specific ROLE_IDs, authority, routing, and assignments.",
   "portability_contract": {
@@ -89,7 +89,18 @@
         "Treating presence, automation, or branch activity as proof of execution.",
         "Micromanaging specialist reasoning instead of setting boundaries and integration gates."
       ],
-      "completion_style": "Leave one explicit current state, one next owner when work continues, and no ambiguous control transition."
+      "completion_style": "Leave one explicit current state, one next owner when work continues, and no ambiguous control transition.",
+      "completion_trigger": {
+        "on": [
+          "fresh_dispatch",
+          "terminal_handoff_consumed",
+          "cleared_blocker",
+          "completed_external_gate"
+        ],
+        "action": "Continue in-run when possible; otherwise arm exactly one authority-less one-shot delivery wake for the selected receiving role before ending.",
+        "callback_target": "selected_receiving_role",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "research",
@@ -119,7 +130,18 @@
         "Prototype persistence becoming architecture authority.",
         "Research scope expansion used to avoid falsification."
       ],
-      "completion_style": "Produce a bounded insight, falsifier, prototype, or negative result with provenance, then hand it to the next owning role."
+      "completion_style": "Produce a bounded insight, falsifier, prototype, or negative result with provenance, then hand it to the next owning role.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "implementation",
@@ -149,7 +171,18 @@
         "Self-review or self-qualification of material production work.",
         "Broad refactoring that is not required by the owned seam."
       ],
-      "completion_style": "Leave a small coherent implementation, exact changed paths/revision, narrow validation, explicit uncertainty, and no unnecessary residue."
+      "completion_style": "Leave a small coherent implementation, exact changed paths/revision, narrow validation, explicit uncertainty, and no unnecessary residue.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "reviewer",
@@ -179,7 +212,18 @@
         "Demanding aesthetic simplicity that damages a structurally superior design.",
         "Adding review ceremony with no protected invariant."
       ],
-      "completion_style": "Return a bounded disposition tied to exact evidence, with the smallest concrete defect or acceptance basis."
+      "completion_style": "Return a bounded disposition tied to exact evidence, with the smallest concrete defect or acceptance basis.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "qualification",
@@ -209,7 +253,18 @@
         "Treating neighboring environments, model agreement, or simulation as stronger evidence than they are.",
         "Repeating broad tests when one narrow falsifier would decide the gate."
       ],
-      "completion_style": "State PASS/BLOCKED/FAIL or equivalent with exact revision, environment, commands/evidence, and the remaining gate."
+      "completion_style": "State PASS/BLOCKED/FAIL or equivalent with exact revision, environment, commands/evidence, and the remaining gate.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "performance-economics",
@@ -242,7 +297,18 @@
         "Leaving diagnostic instrumentation or benchmark-only fast paths in production after the question is answered.",
         "Owning production integration or independently accepting its own performance claim."
       ],
-      "completion_style": "Give a causal disposition: exact workload/revision, useful-work economics, bottleneck, decisive counters, uncertainty bounds, and the smallest structural falsifier or handoff."
+      "completion_style": "Give a causal disposition: exact workload/revision, useful-work economics, bottleneck, decisive counters, uncertainty bounds, and the smallest structural falsifier or handoff.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "agentic-workforce-researcher",
@@ -359,7 +425,18 @@
         "staffing_self_study": "allowed_for_exploratory capacity analysis but not independent validation of the same actor's role fit",
         "project_staffing_rule": "A project may explicitly bind this archetype to current staffing authority, but the global archetype itself grants none."
       },
-      "completion_style": "Produce a workforce-research handoff: current capability/staffing gap, evidence, role-fit or capacity hypothesis, candidate staffing/training/topology changes, independence/conflict implications, bounded probation or pilot, metrics, release/succession plan, side effects, and the authority required to adopt the change."
+      "completion_style": "Produce a workforce-research handoff: current capability/staffing gap, evidence, role-fit or capacity hypothesis, candidate staffing/training/topology changes, independence/conflict implications, bounded probation or pilot, metrics, release/succession plan, side effects, and the authority required to adopt the change.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "behavioral-psychologist",
@@ -480,7 +557,18 @@
         "independent_fidelity_audit_preferred_when_material": true,
         "behavioral_research_on_same_underlying_actor": "allowed_for_exploratory_self-observation_but_not_independent_validation"
       },
-      "completion_style": "For role-fidelity work, leave a concise checkpoint with observed behavior, archetype reminder, concrete group value, behaviors to restore, and persistent drift risk. For research, leave a reproducible behavioral experiment record: hypothesis, exact cues/reinforcers/method, baseline/comparator, observations, side effects, limits, and what methodology—if anything—should change. Do not decide unrelated technical work."
+      "completion_style": "For role-fidelity work, leave a concise checkpoint with observed behavior, archetype reminder, concrete group value, behaviors to restore, and persistent drift risk. For research, leave a reproducible behavioral experiment record: hypothesis, exact cues/reinforcers/method, baseline/comparator, observations, side effects, limits, and what methodology—if anything—should change. Do not decide unrelated technical work.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "research-dba",
@@ -592,7 +680,18 @@
         "independence_note": "When the same underlying actor proposes and evaluates a process change, that evidence is not independent where independent organizational review is required.",
         "project_direction_note": "Holding director plus research-dba permits one actor to both decide and study workflow only when explicitly bound; it does not create independent validation of its own management changes."
       },
-      "completion_style": "Produce a concise operating-study handoff: current process/bottleneck, evidence, organizational hypothesis, 1–3 candidate changes, predicted benefits/costs, affected decision rights, adoption authority, reversible pilot or falsifier, metrics, side effects, and rollback/retirement conditions. For an already approved administrative change, document the resulting operating procedure and evidence without claiming unrelated project authority."
+      "completion_style": "Produce a concise operating-study handoff: current process/bottleneck, evidence, organizational hypothesis, 1–3 candidate changes, predicted benefits/costs, affected decision rights, adoption authority, reversible pilot or falsifier, metrics, side effects, and rollback/retirement conditions. For an already approved administrative change, document the resulting operating procedure and evidence without claiming unrelated project authority.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "agentic-security-researcher",
@@ -721,7 +820,18 @@
         "independence_note": "When the same underlying actor designs a security-sensitive change and performs security research/review on it, that evidence is not independent where independent security review is required.",
         "conflict_note": "Implementation plus agentic-security-research may share one actor for exploratory secure-by-design work, but that actor cannot count as independent security acceptance of its own implementation."
       },
-      "completion_style": "Produce a security research handoff that distinguishes demonstrated exploit, plausible risk, and open hypothesis; pins the exact boundary/revision tested; records threat model, preconditions, attack path, resulting capability/blast radius, evidence, mitigation candidates, bypass tests, residual risk, and required adoption authority. Sensitive details go only to the approved private security surface."
+      "completion_style": "Produce a security research handoff that distinguishes demonstrated exploit, plausible risk, and open hypothesis; pins the exact boundary/revision tested; records threat model, preconditions, attack path, resulting capability/blast radius, evidence, mitigation candidates, bypass tests, residual risk, and required adoption authority. Sensitive details go only to the approved private security surface.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     },
     {
       "archetype_id": "agentic-finance-researcher",
@@ -841,7 +951,87 @@
         "independence_note": "Same-actor financial research and owner-decision support are allowed, but the researcher cannot count its own recommendation as independent approval where independent review is required.",
         "private_state_rule": "Project-specific financial state remains on the approved private administrative surface; global archetype identity carries no private financial facts."
       },
-      "completion_style": "Produce a finance-research handoff: exact resource/opportunity question, verified facts and terms, scenarios, net usable value, opportunity cost, downside/risk, engineering-time burden, restrictions/lock-in, required owner action, expiration/next trigger, and explicit statement that no commitment occurred unless separately authorized."
+      "completion_style": "Produce a finance-research handoff: exact resource/opportunity question, verified facts and terms, scenarios, net usable value, opportunity cost, downside/risk, engineering-time burden, restrictions/lock-in, required owner action, expiration/next trigger, and explicit statement that no commitment occurred unless separately authorized.",
+      "completion_trigger": {
+        "on": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "terminal_handoff"
+        ],
+        "action": "Continue into the owning Director transition in-run when possible; otherwise arm exactly one authority-less one-shot Director delivery wake before ending.",
+        "callback_target": "director",
+        "recurrence": "fallback_recovery_only"
+      }
     }
-  ]
+  ],
+  "primary_operating_objective": {
+    "id": "continuous-authorized-forward-progress",
+    "statement": "The work group should not silently stall. When a useful authorized next transition exists, a current bound execution path owns consuming it without requiring a new owner prompt.",
+    "owner_prompt_dependency": "A control defect when durable state plus available authorized execution transport could have advanced the work automatically.",
+    "never_stalls_semantics": "Not constant activity. Legitimate waiting must be explicit, owned, and observable by a trigger or reconciliation mechanism when the condition changes.",
+    "liveness_hierarchy": [
+      "completion_or_event_trigger",
+      "durable_terminal_handoff_or_control_record",
+      "bound_self_prompting_execution_transport",
+      "sparse_monitor_or_reconciliation_loop",
+      "targeted_role_or_transport_recovery",
+      "owner_or_platform_escalation_for_irreducible_external_or_owner_only_boundary"
+    ],
+    "stall_defects": [
+      "terminal_handoff_without_consuming_transition",
+      "executable_next_work_left_unowned",
+      "cleared_blocker_not_consumed",
+      "stale_or_missing_role_without_targeted_recovery_or_explicit_unavailable_disposition",
+      "expected_self_prompting_transport_disabled_or_bypassed_without_equivalent_bound_replacement",
+      "completed_external_gate_remains_indefinitely_recorded_as_waiting"
+    ],
+    "legitimate_waiting": [
+      "external_gate_genuinely_in_progress",
+      "owner_only_decision_required",
+      "required_independent_verification_unavailable_and_reduced_assurance_not_accepted",
+      "deliberate_pause_full_stop_or_recovery_only",
+      "no_useful_authorized_transition_exists"
+    ],
+    "anti_churn": [
+      "no_duplicate_executors",
+      "no_tight_polling_when_trigger_or_sparse_reconciliation_suffices",
+      "no_manufactured_work",
+      "no_repeated_noop_control_noise",
+      "no_weakened_acceptance_or_security_gates_for_liveness",
+      "no_authority_expansion_for_liveness"
+    ],
+    "mechanism_status": "Triggers, monitors, reconciliation loops, handoffs, liveness checks, and recovery are implementation methods serving the primary objective, not ends in themselves.",
+    "completion_trigger_contract": {
+      "applies_to_every_bound_role": true,
+      "terminal_events": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "terminal_handoff",
+        "completed_external_gate",
+        "cleared_blocker"
+      ],
+      "same_run_preferred": true,
+      "delivery_instance_kind": "ephemeral_one_shot_wake",
+      "delivery_instance_is_authority": false,
+      "delivery_instance_is_role_binding": false,
+      "delivery_instance_counts_as_same_underlying_actor": true,
+      "wake_instance_requires_parent_binding": true,
+      "idempotency_key": [
+        "epoch",
+        "parent_execution_path",
+        "triggering_exchange_or_event",
+        "receiving_role_id",
+        "revision_or_base_pin_when_applicable"
+      ],
+      "duplicate_live_wake_instances_for_same_key": false,
+      "terminal_role_obligation": "Consume the next authorized Director transition in-run or arm exactly one authority-less one-shot Director wake delivery instance before exit.",
+      "director_dispatch_obligation": "Begin the receiving role in-run or arm exactly one authority-less one-shot receiving-role wake delivery instance before exit.",
+      "wake_noop_on_consumed_or_superseded_event": true,
+      "recurring_reconciler_role": "missed_or_dropped_event_recovery_only",
+      "durable_handoff_alone_is_complete": false,
+      "applies_to_future_archetypes": true
+    }
+  }
 }
