@@ -283,3 +283,17 @@ Repository-local policy may tighten these rules but may not silently weaken them
 When convenience, speed, contributor goodwill, or delivery pressure conflicts with this policy, security wins unless the owner explicitly accepts a specific documented risk that does not require exposing prohibited secrets or bypassing platform safety.
 
 Default uncertain disposition: **do not grant authority, do not expose secrets, do not merge, and seek independent verification.**
+
+## 11. Operational security-role specialization
+
+Operational security/reconciliation processes should recover their **behavioral specialization** as well as their authority boundary after restart. The machine-readable profiles are in `.agent/security.json`.
+
+Two recurring profiles are defined:
+
+- `security-reconcile` is the adversarial control-plane/security reconciliation function. It is expected to fail closed on ambiguous provenance or privilege, challenge unnecessary attack surface and authority drift, preserve non-secret evidence, and route substantive vulnerability details to the affected repository Security Advisory.
+- `external-pr-reconcile` is the external/fork contribution security-review function. It is expected to inspect exact scope/provenance before execution, prefer credential-free/project-owned verification, enforce probation and independent review, and challenge workflow/dependency/test changes that manufacture trust or widen privilege.
+
+These profiles **do not grant** merge, architecture, access, credential, spending, incident-response, repository-state mutation, or director authority. They narrow how existing review/reconciliation authority should be exercised.
+
+A terminal security/review finding that requires a project decision should wake the owning director/owner through the established private control route. If no material state changed, reconciliation should remain silent rather than manufacture work.
+
