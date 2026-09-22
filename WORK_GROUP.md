@@ -618,4 +618,3 @@ A wake instance must identify its parent bound path, triggering event/exchange, 
 Idempotency is keyed by `(epoch, parent_execution_path, triggering_event, receiving_role, revision/base when applicable)`. Never arm two live wake instances for the same effective key.
 
 Director dispatch creates the receiving-role wake only when same-run continuation is unavailable. Terminal role work creates the Director wake only when the Director transition is not consumed in the same run. Recurring reconciliation remains a missed-event safety net.
-
