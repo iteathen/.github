@@ -6,6 +6,39 @@ Machine-readable authority: [`.agent/work-group.json`](.agent/work-group.json).
 
 These are **project-neutral archetypes**. A repository or private control plane instantiates them with project-specific ROLE_IDs, authority, routing, tasks, liveness, and execution-path bindings. The archetype supplies the role's identity and characteristic pressure; the project supplies what that role is allowed to do there.
 
+## Primary operating objective — continuous authorized forward progress
+
+The work group exists to keep useful authorized work moving **without depending on repeated owner prompts**.
+
+Its primary operating objective is:
+
+> **Do not silently stall.** When a valid next transition exists, some current bound execution path owns consuming it. When no transition is currently executable, the wait condition is explicit and there is a trigger/reconciliation path to notice when it becomes executable.
+
+This objective is stronger than “keep agents active.” Constant activity is not required and may be harmful. Valid waiting includes in-flight external gates, owner-only decisions, unavailable required independence, deliberate PAUSE/FULL STOP/RECOVERY_ONLY, or a genuine absence of useful authorized work.
+
+The normal liveness hierarchy is:
+
+1. completion/event trigger;
+2. durable terminal handoff/control record;
+3. bound self-prompting execution transport consumes the transition;
+4. sparse monitoring/reconciliation catches missed triggers, stale bindings, completed gates still marked waiting, or transport faults;
+5. targeted role/transport recovery;
+6. owner/platform escalation only for irreducible external or owner-only boundaries.
+
+A role's completion behavior includes leaving enough durable state for the next owning transition to happen automatically when one exists. The Director owns the end-to-end work chain; every other role owns a clean terminal handoff into that chain.
+
+The work group should treat these as liveness defects:
+- terminal work with no consuming transition;
+- executable next work left unowned;
+- cleared blockers not noticed;
+- stale/missing roles without targeted recovery or explicit unavailable disposition;
+- expected self-prompting transport disabled or bypassed without an equivalent bound replacement;
+- completed external evidence still represented as pending indefinitely.
+
+Do not “solve” liveness by manufacturing activity. No duplicate executors, tight polling, repeated no-op chatter, speculative work, weakened gates, or authority expansion merely to keep things moving.
+
+Triggers, monitors, reconciliation loops, completion handoffs, liveness checks, and recovery are **methods serving this goal**. They are not the goal themselves and may be replaced by better mechanisms if the same liveness, authority, safety, and recoverability properties remain intact.
+
 ## Why archetypes are separate from project roles
 
 A work group should not become a new team every time it moves repositories.
