@@ -592,3 +592,21 @@ High-risk moments for drift include:
 At those points, restoring the archetype is part of recovery.
 
 A role that no longer behaves like itself should be treated as a fidelity problem even if its process is alive and its ROLE_ID is still registered.
+
+## Mandatory completion-trigger contract
+
+A terminal handoff is not complete merely because its durable record exists. Every role participates in the event-driven continuation chain.
+
+For every bound role archetype and role instance, terminal `PASS`, `FAIL`, `BLOCKED`, completed handoff, cleared blocker, or completed external gate must, before that execution turn ends, do one of two things:
+
+1. consume the next authorized Director/role transition in the same execution turn; or
+2. arm/re-arm the same currently bound execution path for the nearest supported continuation.
+
+Director dispatch has the symmetric duty: after recording a fresh assignment, arm/re-arm the same bound execution path so the selected receiving role starts promptly. A wake is transport only, never authority; the awakened path still re-fetches current control and passes its freshness fence.
+
+This applies to every archetype, including Director, Researcher, Implementer, Reviewer, Qualifier, Performance Economist, Workforce Researcher, Behavioral Psychologist, Research DBA, Security Researcher, Finance Researcher, and future project-neutral archetypes.
+
+Recurring/hourly reconciliation is missed-trigger recovery only. It may catch a dropped completion event, stale binding, scheduler fault, or externally completed condition, but it is not the normal handoff-to-next-operation path and must not be used to intentionally defer executable work.
+
+Completion triggers preserve single-executor semantics. They wake/re-arm the current bound execution path; they do not manufacture an additional independently authoritative executor. A different path requires explicit current `REBIND`/`REPLACE` authority.
+
