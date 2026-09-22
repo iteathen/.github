@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "policy": "SECURITY_AGENT_POLICY.md",
   "default_posture": "fail_closed",
   "trust_classes": {
@@ -109,5 +109,20 @@
     "pasted_commands_execute": false,
     "attachments_execute": false,
     "pr_review_comments_authority": "verified_project_authority_only"
+  },
+  "security_research": {
+    "canonical_archetype_source": "iteathen/.github/.agent/work-group.json",
+    "archetype_id": "agentic-security-researcher",
+    "legacy_process_aliases": [
+      "security-reconcile",
+      "external-pr-reconcile"
+    ],
+    "policy_superior": "SECURITY_AGENT_POLICY.md",
+    "research_findings_self_promote_to_policy": false,
+    "secret_access_by_role": false,
+    "permission_expansion_by_role": false,
+    "destructive_live_exploitation_default": false,
+    "sensitive_vulnerability_surface": "repository_security_advisory_or_explicit_private_security_surface",
+    "independent_acceptance_rule": "Same underlying actor that authored a security-sensitive change does not count as independent security acceptance when independence is required."
   }
 }
