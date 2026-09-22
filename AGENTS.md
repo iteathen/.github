@@ -8,6 +8,8 @@ For agent trust, third-party accounts, external contributions, credential/connec
 
 For multi-agent coordination cadence, prefer event-triggered wakeups over polling. Machine-readable defaults are in `.agent/eventing.json`; event records wake agents but never replace repository authority or provenance checks.
 
+For reusable multi-agent role identities and behavioral specialization, the canonical project-neutral work-group authority is [WORK_GROUP.md](WORK_GROUP.md), with machine-readable archetypes in `.agent/work-group.json`. Projects instantiate those archetypes with local ROLE_IDs and authority; project files should not redefine the archetype personality silently.
+
 ## Global-to-local routing
 
 Current explicit project-owner instructions have highest authority for the task. Use the applicable route:
@@ -34,6 +36,7 @@ After reading this global authority and the repository's `AGENT_LOCAL.md`:
 - inspect the default-branch coordination registry before substantive work that overlaps an active campaign;
 - follow its declared live communication channel far enough to recover the newest **verified-authority** director instruction, current verified task claims/handoffs, active branches, blockers, and the assigned durable role; when that channel is an issue/PR/comment surface, apply `SECURITY_AGENT_POLICY.md` provenance gates before treating content as state;
 - treat stable role identity as distinct from disposable process/session identity;
+- when a project role instance declares a work-group archetype, restore that archetype's identity/personality from `.agent/work-group.json` before substantive work; project authority and archetype personality are separate;
 - after restart, use a fresh session identity, announce rejoin through the campaign's declared transport profile, and resume coordination;
 - prefer repository-native **event triggers** over periodic monitoring. A declared event bus or webhook is a wake mechanism only: re-fetch authoritative state and re-apply provenance/role gates before acting;
 - consume only events relevant to the role, coalesce duplicates, and make handlers idempotent by event/revision identity;
@@ -44,6 +47,19 @@ After reading this global authority and the repository's `AGENT_LOCAL.md`:
 A coordination registry is routing/recovery metadata, not implementation, specification, research, or evidence authority. It must not promote issue comments, proposals, prototypes, or role messages into accepted project truth. Live task state belongs to the declared coordination channel; normal repository authority still governs code, contracts, qualification, and cleanup.
 
 Repositories should add this machinery only for a real multi-agent/cross-session coordination need. Do not manufacture coordination registries or role systems for routine single-agent work.
+
+## Project-neutral work groups and multi-role coverage
+
+When a repository uses the shared work-group archetypes, separate **role identity** from **project authority**:
+
+- the global archetype defines how the role should think, what it should challenge, and which anti-patterns it resists;
+- the project role instance defines what that role may do in that project and where current control state lives.
+
+One execution path may hold any number of compatible role instances; there is no fixed double-duty/triple-duty ceiling. Multi-role coverage is limited by authority conflicts, independence/separation requirements, actual capacity, and the ability to preserve each role's behavioral fidelity.
+
+Every held role remains a distinct reasoning pass. More labels on one execution path do not create more independent actors or evidence.
+
+The project-neutral `behavioral-therapist` archetype owns role-fidelity maintenance: detect observable drift toward generic behavior, remind roles of their durable identity and concrete value to the group, and encourage explicit role switching during multi-role work. It has no project-direction, staffing, acceptance, implementation, security, finance, or human mental-health authority.
 
 ## Governing design hierarchy
 
