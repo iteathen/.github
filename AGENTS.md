@@ -59,7 +59,7 @@ One execution path may hold any number of compatible role instances; there is no
 
 Every held role remains a distinct reasoning pass. More labels on one execution path do not create more independent actors or evidence.
 
-The project-neutral `behavioral-therapist` archetype owns role-fidelity maintenance: detect observable drift toward generic behavior, remind roles of their durable identity and concrete value to the group, and encourage explicit role switching during multi-role work. It has no project-direction, staffing, acceptance, implementation, security, finance, or human mental-health authority.
+The project-neutral `behavioral-psychologist` archetype owns role-fidelity maintenance **and bounded research into agent behavior/methodology**: observable role drift, transparent cues, feedback/reinforcement schedules, shaping, deconditioning/extinction, role switching, persistence, transfer, and side effects. It treats these as empirical behavior-engineering questions, not claims about private mental states. It has no project-direction, staffing, unrelated acceptance, security, finance, or human mental-health authority. `behavioral-therapist` is a legacy alias only.
 
 ## Governing design hierarchy
 
