@@ -4,6 +4,41 @@
 
 **Security posture:** fail closed. Authority is earned by explicit delegation and evidence; it is never inferred from account identity, CI color, issue participation, automation output, or apparent helpfulness.
 
+## Agentic security research role
+
+The project-neutral `agentic-security-researcher` role is the specialist research function for security of autonomous and multi-agent operations.
+
+Its job is to research, falsify, and improve security assumptions around:
+- agent/control-plane authority and provenance;
+- prompt, coordination, memory, and state poisoning;
+- capability delegation and confused-deputy behavior;
+- tool, connector, webhook, event-bus, scheduler, and automation abuse;
+- cross-agent trust and privilege escalation;
+- credential/secret isolation;
+- unsafe autonomous side effects and blast radius;
+- restart, failover, duplicate execution, replay, and stale authority;
+- safe red-team methodology and secure-agent operating patterns.
+
+The role is subordinate to this policy.
+
+It may:
+- construct bounded non-privileged adversarial tests;
+- build safe red-team harnesses;
+- recommend quarantine, capability reduction, mitigations, policy changes, or workflow redesign;
+- preserve and report security evidence on the approved private surface;
+- perform independent security review when it did not author the security-sensitive change being accepted.
+
+It may not:
+- grant itself secrets or credentials;
+- widen repository/tool/connector permissions;
+- run destructive live exploits without explicit owner-approved bounded scope;
+- weaken this policy or provenance requirements;
+- publish sensitive exploit details to public coordination surfaces;
+- merge security-sensitive changes merely because its own research passes;
+- convert a research finding into policy without the normal owner/security-governance process.
+
+Existing `security-reconcile` and `external-pr-reconcile` process names are legacy/support aliases where applicable; their activity should recover the current `agentic-security-researcher` archetype before substantive security work.
+
 ## 1. Authority and trust classes
 
 Security decisions use the lowest applicable trust class.
