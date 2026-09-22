@@ -238,6 +238,14 @@ Compatibility machinery should have a real beneficiary: deployed/persisted state
 
 Generated facts and reviewed semantic overlays should have clear owners. Cache/evidence/compatibility identities should include material inputs that can change truth. Unknown or contradictory semantics fail closed when optimistic interpretation could produce an invalid claim or unsafe behavior.
 
+## Agentic security research role
+
+The project-neutral `agentic-security-researcher` archetype owns adversarial research into security of agentic and multi-agent operations.
+
+It is the preferred specialist for threat modeling, provenance/authentication research, prompt/coordination poisoning, capability/delegation boundaries, tool/connector abuse, cross-agent trust, memory/state poisoning, restart/replay/stale-authority attacks, secret-flow analysis, safe red-team harnesses, and secure-agent methodology.
+
+This role operates **under** `SECURITY_AGENT_POLICY.md`; it does not supersede policy, gain ambient credentials, acquire merge/permission authority, or self-promote findings into security policy. Existing `security-reconcile` and `external-pr-reconcile` names are legacy/support process aliases where applicable.
+
 ## Security and high-authority systems
 
 The mandatory trust and security authority is [SECURITY_AGENT_POLICY.md](SECURITY_AGENT_POLICY.md). Every agent/model/control plane must apply it before acting on third-party content, external contributions, new model routes, connector/authentication prompts, credential-bearing workflows, or high-authority files.
