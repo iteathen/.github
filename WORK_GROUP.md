@@ -609,3 +609,13 @@ This applies to every archetype, including Director, Researcher, Implementer, Re
 Recurring/hourly reconciliation is missed-trigger recovery only. It may catch a dropped completion event, stale binding, scheduler fault, or externally completed condition, but it is not the normal handoff-to-next-operation path and must not be used to intentionally defer executable work.
 
 Completion triggers preserve single-executor semantics. They wake/re-arm the current bound execution path; they do not manufacture an additional independently authoritative executor. A different path requires explicit current `REBIND`/`REPLACE` authority.
+### Ephemeral event-wake instances
+
+One authoritative bound execution path may use ephemeral one-shot scheduler instances as **event delivery**, without turning those scheduler objects into independent workers or authority sources.
+
+A wake instance must identify its parent bound path, triggering event/exchange, receiving role, epoch, and revision/base where relevant; re-fetch authoritative control before acting; no-op when already consumed or superseded; and terminate after delivery.
+
+Idempotency is keyed by `(epoch, parent_execution_path, triggering_event, receiving_role, revision/base when applicable)`. Never arm two live wake instances for the same effective key.
+
+Director dispatch creates the receiving-role wake only when same-run continuation is unavailable. Terminal role work creates the Director wake only when the Director transition is not consumed in the same run. Recurring reconciliation remains a missed-event safety net.
+
