@@ -891,12 +891,25 @@
         "completed_external_gate",
         "cleared_blocker"
       ],
-      "terminal_role_obligation": "Before ending the execution turn, either consume the next authorized transition immediately or arm/re-arm the same currently bound execution path for the nearest supported continuation.",
-      "director_dispatch_obligation": "Every fresh Director assignment must arm/re-arm the same bound execution path so the selected receiving role begins promptly.",
+      "same_run_preferred": true,
+      "delivery_instance_kind": "ephemeral_one_shot_wake",
+      "delivery_instance_is_authority": false,
+      "delivery_instance_is_role_binding": false,
+      "delivery_instance_counts_as_same_underlying_actor": true,
+      "wake_instance_requires_parent_binding": true,
+      "idempotency_key": [
+        "epoch",
+        "parent_execution_path",
+        "triggering_exchange_or_event",
+        "receiving_role_id",
+        "revision_or_base_pin_when_applicable"
+      ],
+      "duplicate_live_wake_instances_for_same_key": false,
+      "terminal_role_obligation": "Consume the next authorized Director transition in-run or arm exactly one authority-less one-shot Director wake delivery instance before exit.",
+      "director_dispatch_obligation": "Begin the receiving role in-run or arm exactly one authority-less one-shot receiving-role wake delivery instance before exit.",
+      "wake_noop_on_consumed_or_superseded_event": true,
+      "recurring_reconciler_role": "missed_or_dropped_event_recovery_only",
       "durable_handoff_alone_is_complete": false,
-      "wake_is_transport_not_authority": true,
-      "executor_identity_rule": "Completion triggers preserve the current bound executor. Another executor requires explicit current REBIND/REPLACE.",
-      "reconciliation_rule": "Recurring/hourly reconciliation is missed-trigger recovery only, not the normal continuation mechanism.",
       "applies_to_future_archetypes": true
     }
   }
