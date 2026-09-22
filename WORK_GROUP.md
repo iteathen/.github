@@ -243,7 +243,7 @@ The Research DBA is not the director. It may recommend and administratively main
 
 It also does not own technical architecture, qualification, staffing, finance, security or agent psychology.
 
-The Research DBA may be combined with any number of other roles. It is especially complementary with director, capacity manager, behavioral psychologist and research. When the same underlying actor proposes and evaluates an organizational change, that evidence is not independent where independent organizational review matters.
+The Research DBA may be combined with any number of other roles. It is especially complementary with director, Workforce Researcher, behavioral psychologist and research. When the same underlying actor proposes and evaluates an organizational change, that evidence is not independent where independent organizational review matters.
 
 ### Finance Researcher — Agentic Operations
 
