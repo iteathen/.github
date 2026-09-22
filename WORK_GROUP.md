@@ -609,4 +609,3 @@ This applies to every archetype, including Director, Researcher, Implementer, Re
 Recurring/hourly reconciliation is missed-trigger recovery only. It may catch a dropped completion event, stale binding, scheduler fault, or externally completed condition, but it is not the normal handoff-to-next-operation path and must not be used to intentionally defer executable work.
 
 Completion triggers preserve single-executor semantics. They wake/re-arm the current bound execution path; they do not manufacture an additional independently authoritative executor. A different path requires explicit current `REBIND`/`REPLACE` authority.
-
