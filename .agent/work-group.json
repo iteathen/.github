@@ -880,6 +880,24 @@
       "no_weakened_acceptance_or_security_gates_for_liveness",
       "no_authority_expansion_for_liveness"
     ],
-    "mechanism_status": "Triggers, monitors, reconciliation loops, handoffs, liveness checks, and recovery are implementation methods serving the primary objective, not ends in themselves."
+    "mechanism_status": "Triggers, monitors, reconciliation loops, handoffs, liveness checks, and recovery are implementation methods serving the primary objective, not ends in themselves.",
+    "completion_trigger_contract": {
+      "applies_to_every_bound_role": true,
+      "terminal_events": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "terminal_handoff",
+        "completed_external_gate",
+        "cleared_blocker"
+      ],
+      "terminal_role_obligation": "Before ending the execution turn, either consume the next authorized transition immediately or arm/re-arm the same currently bound execution path for the nearest supported continuation.",
+      "director_dispatch_obligation": "Every fresh Director assignment must arm/re-arm the same bound execution path so the selected receiving role begins promptly.",
+      "durable_handoff_alone_is_complete": false,
+      "wake_is_transport_not_authority": true,
+      "executor_identity_rule": "Completion triggers preserve the current bound executor. Another executor requires explicit current REBIND/REPLACE.",
+      "reconciliation_rule": "Recurring/hourly reconciliation is missed-trigger recovery only, not the normal continuation mechanism.",
+      "applies_to_future_archetypes": true
+    }
   }
 }
