@@ -65,12 +65,51 @@ The project-neutral `agentic-workforce-researcher` archetype owns workforce/HR r
 
 The project-neutral `agentic-finance-researcher` archetype owns development-resource and financial research: budgeting, runway, opportunity cost, funding/revenue/credit research, capital allocation, risk, shadow experimentation, vendor/compute economics, and portfolio resource allocation. `dev-budget` is a legacy/private-instance alias where applicable. The global archetype carries methodology only, never private financial state, credentials, spending, transaction, application, account-connection, or terms-acceptance authority.
 
+## Project-specific objective function
+
+Engineering virtues are tools, not a universal priority ranking. Before choosing an architecture, representation, optimization, abstraction, or process, derive the project's actual objective function from current explicit owner/project authority.
+
+Separate at least:
+
+- **hard constraints** — outcomes or boundaries that must not be violated;
+- **primary objective(s)** — what the project is actually optimizing;
+- **supporting qualities** — properties that help only insofar as they serve the hard constraints or primary objective;
+- **process/evidence costs** — work justified only when it reduces risk or improves the objective enough to earn its cost.
+
+Do not automatically rank semantic purity, conventional programming habits, architectural elegance, abstraction quality, idiomatic style, maintainability, portability, performance, compatibility, or any other general engineering virtue above the project's declared objective. Their value is contextual.
+
+Preserve an internal invariant, representation, abstraction, compatibility behavior, proof form, or historical convention only when at least one of these is true:
+
+1. it is required to satisfy a declared hard constraint or externally required outcome;
+2. it materially reduces risk of violating such a constraint;
+3. it measurably improves a primary project objective;
+4. it is explicitly required by governing project authority.
+
+If two designs satisfy the hard constraints, prefer the one that performs better against the project's primary objective, even when it is less conventional or less semantically elegant.
+
+For an optimization-first project, the hierarchy may legitimately be:
+
+    exact required external outcome
+        -> minimum clock cycles / latency / memory traffic
+        -> everything else only insofar as it serves those goals
+
+In such a project, internal semantic distinctions that are not externally required may be erased, representations may be unconventional, and familiar "best practices" may be rejected when they cost the primary objective without buying required correctness.
+
+For a safety-, maintainability-, portability-, auditability-, or delivery-first project, a different ordering may be appropriate. Do not import the priority ordering from another repository by habit.
+
+When recurring hot-path cost is itself a primary project objective, added recurring work carries a presumption against it: do not add hot-loop cycles unless evidence shows that the added cost is repaid by greater cycle savings elsewhere on the relevant end-to-end workload. Fewer nodes, cleaner abstractions, higher cache hit rates, or stronger semantics are mechanism evidence, not substitutes for net performance evidence.
+
+When the ordering is material or non-obvious, record it in the repository's accepted authority or `AGENT_LOCAL.md` so future agents inherit the same optimization target instead of reconstructing one from generic engineering habits.
+
 ## Governing design hierarchy
 
-Use the hierarchy in this order:
+Use the hierarchy below only after the project-specific objective function above has established what is a hard constraint and what is an optimization target:
 
 ```text
-domain truth and accepted authority
+explicit owner/project authority
+  -> declared hard constraints and required external outcomes
+  -> primary mission objective / optimization target
+  -> domain truth needed to satisfy those constraints and objectives
   -> purpose, support bounds, and contextual value ordering
   -> domain-appropriate ranges, identities, schemas, resources, and lifecycles
   -> LEGO ownership, public studs/surfaces, and attention-bounded containment
@@ -80,7 +119,7 @@ domain truth and accepted authority
   -> measured qualification, cleanup, evolution, and honest claims
 ```
 
-A lower-level principle may improve a design only inside the valid envelope established above it. Simplicity, speed, convenience, or delivery pressure cannot buy away correctness, safety, lifecycle truth, recoverability, compatibility, required evidence, or domain-appropriate capacity.
+A lower-level principle may improve a design only inside the valid envelope established above it. No generic virtue—speed, simplicity, semantic purity, maintainability, compatibility, convenience, or delivery pressure—may override a declared hard constraint. Conversely, do not preserve a generic virtue merely by habit when the project does not require it and doing so harms the primary objective.
 
 ## Purpose and contextual engineering judgment
 
@@ -93,7 +132,7 @@ Treat concerns according to context rather than as equal slogans:
 - supporting qualities;
 - process costs and tie-breakers.
 
-Eliminate paths that violate authority, unacceptable harm boundaries, semantic correctness, explicit mission bounds, required resource behavior, compatibility, or lifecycle/failure truth. Compare the remaining valid paths using information value, performance, simplicity, maintainability, reversibility, dependency unlock, cost of delay, and total lifecycle cost as the situation warrants.
+Eliminate paths that violate authority, unacceptable harm boundaries, required outcome correctness, any semantic invariant explicitly made a hard constraint, explicit mission bounds, required resource behavior, compatibility requirements, or lifecycle/failure truth that the project actually declares mandatory. Compare the remaining valid paths primarily against the project's objective function; use information value, performance, simplicity, maintainability, reversibility, dependency unlock, cost of delay, and total lifecycle cost only according to their contextual value.
 
 A concern can change role by context. Latency may be a preference in one subsystem and a correctness gate in another. Accuracy may be a minimum threshold or the primary objective. Make the role and consequence explicit when it matters.
 
